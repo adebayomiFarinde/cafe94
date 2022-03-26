@@ -1,35 +1,57 @@
 package com.example.cafesystem;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
-public class Order {
+public class Order extends BaseEntity {
 
-    private int itemId;
-    private int customerId;
-    private LocalDateTime orderTime;
+    private UUID customerId;
+    private LocalDate orderTime;
     private boolean isApproved;
     private boolean completed;
 
-    //notify customer of daily special before making order
-    public void makeOrder(int customerId, Order order)
-    {
-
-
-
-    }
-    //chef marks complete order
-    public void orderCompleted()
-    {
-        this.completed = true;
-
+    public Order(UUID itemId,
+    UUID customerId,
+    LocalDate orderTime,
+    boolean isApproved,
+    boolean completed){
+        super(itemId);
+        this.completed = completed;
+        this.customerId = customerId;
+        this.orderTime = orderTime;
+        this.isApproved = isApproved;
     }
 
+    public UUID getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(UUID customerId) {
+        this.customerId = customerId;
+    }
+
+    public LocalDate getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(LocalDate orderTime) {
+        this.orderTime = orderTime;
+    }
+
+    public boolean getApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(boolean approved) {
+        isApproved = approved;
+    }
+
+    public boolean getCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
 }
-
-/*
-If
-an order has not been completed then it will need to appear on a list of orders.
- A screen should be
-avaliable in the system to be able to display this typ
-
- */

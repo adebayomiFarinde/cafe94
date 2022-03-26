@@ -1,9 +1,9 @@
 package com.example.cafesystem.ViewModels;
 
-public class CustomerViewModel {
-    public String address;
-    public String password;
-    public String fName;
-    public String lName;
-    public String email;
+import com.example.cafesystem.Person;
+
+public class CustomerViewModel extends Person {
+    public CustomerViewModel(String fName, String lName, String password, String address, String email) {
+        super(fName, lName, password, address, email);
+    }
 }

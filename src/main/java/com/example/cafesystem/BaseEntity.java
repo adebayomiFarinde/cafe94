@@ -8,6 +8,10 @@ public class BaseEntity {
     private boolean isDeleted;
     private LocalDate createdDate;
 
+    public BaseEntity(UUID id){
+        this.id = id;
+    }
+
     public UUID getId() {
         return id;
     }

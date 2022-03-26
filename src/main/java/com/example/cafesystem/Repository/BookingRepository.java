@@ -4,16 +4,33 @@ import com.example.cafesystem.ViewModels.CreateBooking;
 import com.example.cafesystem.ViewModels.UpdateCreateBooking;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class BookingRepository extends IBookingRepository{
     @Override
     public UUID createBooking(CreateBooking booking) {
         ArrayList<Booking> all = MockData.getBookings();
         UUID newId = UUID.randomUUID();
-        all.add(new Booking(newId, booking.bookingDay, booking.bookingTime,
-                booking.customerID, booking.numberOfGuest));
+        all.add(new Booking(newId, booking.getBookingDay(), booking.getBookingTime(),
+                booking.getCustomerID(), booking.getNumberOfGuest()));
+        MockData.setBookings(all);
+
         return newId;
+    }
+
+    @Override
+    public List<Booking> getAllBookingByCustomerId(UUID customerID) {
+        ArrayList<Booking> all = MockData.getBookings();
+
+        List<Booking> list = all.stream().filter(x -> x.getId() == customerID)
+                .collect(Collectors.toList());
+
+        list.sort(Comparator.comparing(Booking::getCreatedDate));
+
+        return list;
     }
 
     @Override
@@ -29,6 +46,8 @@ public class BookingRepository extends IBookingRepository{
 
         all.set(index, booking);
 
+        MockData.setBookings(all);
+
         return;
     }
 
@@ -37,8 +56,9 @@ public class BookingRepository extends IBookingRepository{
         ArrayList<Booking> all = MockData.getBookings();
         all.removeIf(x -> x.getId() == bookingId);
 
-        return;
+        MockData.setBookings(all);
 
+        return;
     }
 
     @Override

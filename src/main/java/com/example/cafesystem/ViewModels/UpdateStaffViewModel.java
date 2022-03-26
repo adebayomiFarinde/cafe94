@@ -1,4 +1,21 @@
 package com.example.cafesystem.ViewModels;
 
-public class UpdateStaffViewModel {
+import com.example.cafesystem.Person;
+import com.example.cafesystem.ViewModels.Enum.Portfolio;
+
+public class UpdateStaffViewModel extends Person {
+    public Portfolio portfolio;
+
+    public UpdateStaffViewModel(String fName, String lName, String password, String address, Portfolio portfolio, String email) {
+        super(fName, lName, password, address, email);
+        this.portfolio = portfolio;
+    }
+
+    public Portfolio getPortfolio() {
+        return portfolio;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
+    }
 }

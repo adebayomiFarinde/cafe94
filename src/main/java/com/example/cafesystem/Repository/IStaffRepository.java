@@ -12,4 +12,6 @@ public abstract class IStaffRepository {
     public abstract void updateStaff(UUID staffId, UpdateStaffViewModel staff);
     public abstract void deleteStaff(UUID staffId);
     public abstract Staff getStaffId(UUID staffId);
+    public abstract void deleteStaffByEmail(String email);
+    public abstract Staff getStaffByEmailPassword(String email, String password);
 }

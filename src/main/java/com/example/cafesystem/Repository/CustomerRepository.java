@@ -14,10 +14,18 @@ public class CustomerRepository extends ICustomerRepository{
     public UUID createCustomer(CustomerViewModel customer) {
         ArrayList<Customer> all = MockData.getCustomers();
         UUID newId = UUID.randomUUID();
-        all.add(new Customer(newId, customer.fName, customer.lName,
-                customer.password, customer.address, customer.email));
 
-        return newId;
+        try{
+            all.add(new Customer(newId, customer.getfName(), customer.getlName(),
+                    customer.getPassword(), customer.getAddress(), customer.getEmail()));
+
+            MockData.setCustomers(all);
+
+            return newId;
+
+        }catch (Exception ex){
+            return  null;
+        }
     }
 
     @Override
@@ -33,6 +41,8 @@ public class CustomerRepository extends ICustomerRepository{
 
         all.set(index, customer);
 
+        MockData.setCustomers(all);
+
         return;
     }
 
@@ -40,6 +50,8 @@ public class CustomerRepository extends ICustomerRepository{
     public void deleteCustomer(UUID customerId) {
         ArrayList<Customer> all = MockData.getCustomers();
         all.removeIf(x -> x.getId() == customerId);
+
+        MockData.setCustomers(all);
 
         return;
     }
@@ -52,8 +64,22 @@ public class CustomerRepository extends ICustomerRepository{
     }
 
     @Override
+    public void deleteCustomerByEmail(String email) {
+        ArrayList<Customer> all = MockData.getCustomers();
+
+        Customer customer = all.stream().filter(x -> x.getEmail() == email).findAny().orElse(null);
+
+        if(customer != null){
+            deleteCustomer(customer.getId());
+        }
+
+    }
+
+    @Override
     public Customer getCustomerByEmailPassword(String email, String password) {
         ArrayList<Customer> all = MockData.getCustomers();
 
-        return all.stream().filter(x -> x.getEmail() == email && x.getPassword() == password).findAny().orElse(null);    }
+        return all.stream().filter(x -> x.getEmail() == email && x.getPassword() == password)
+                .findAny().orElse(null);
+    }
 }

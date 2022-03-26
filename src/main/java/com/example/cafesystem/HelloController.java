@@ -9,6 +9,8 @@ import com.example.cafesystem.Services.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+import java.util.UUID;
+
 public class HelloController {
     private IUserService _userService;
     private IStaffRepository _staffRepository;
@@ -23,9 +25,9 @@ public class HelloController {
     private Label welcomeText;
 
     @FXML
-    protected void onHelloButtonClick() {
-        boolean result = _userService.create("Adebayomi", "Farinde", "checkschool@example.com");
+    protected void onCreateCustomerButtonClick() {
+        UUID id = _userService.createCustomer("Adebayomi", "Farinde", "checkschool@example.com");
 
-        welcomeText.setText("Welcome to JavaFX Application!");
+        welcomeText.setText("New User with id " + id + " created" );
     }
 }

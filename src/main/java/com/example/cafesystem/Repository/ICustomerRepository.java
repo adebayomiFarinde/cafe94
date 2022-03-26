@@ -12,4 +12,5 @@ public abstract class ICustomerRepository {
     public abstract void deleteCustomer(UUID customerId);
     public abstract Customer getCustomerId(UUID customerId);
     public abstract Customer getCustomerByEmailPassword(String email, String password);
+    public abstract void deleteCustomerByEmail(String email);
 }
