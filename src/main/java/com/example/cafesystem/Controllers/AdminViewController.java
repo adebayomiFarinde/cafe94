@@ -1,5 +1,12 @@
 package com.example.cafesystem;
 
+import com.example.cafesystem.Repository.CustomerRepository;
+import com.example.cafesystem.Repository.ICustomerRepository;
+import com.example.cafesystem.Repository.IStaffRepository;
+import com.example.cafesystem.Repository.StaffRepository;
+import com.example.cafesystem.Services.IUserService;
+import com.example.cafesystem.Services.UserService;
+import com.example.cafesystem.ViewModels.StaffViewModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -18,6 +25,16 @@ import java.util.ResourceBundle;
 
 
 public class AdminViewController implements Initializable {
+
+    private IUserService _userService;
+    private IStaffRepository _staffRepository;
+    private ICustomerRepository _customerRepository;
+    public AdminViewController(){
+        _staffRepository = new StaffRepository();
+        _customerRepository = new CustomerRepository();
+        _userService = new UserService(_customerRepository, _staffRepository);
+
+    }
 
     @FXML
     Label AdminViewHelloLabel;
@@ -100,7 +117,6 @@ public class AdminViewController implements Initializable {
     }
 
     public void switchToAddStaff(ActionEvent event) throws IOException {
-
 
         root = FXMLLoader.load(getClass().getResource("AdminAddStaffView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

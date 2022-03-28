@@ -26,7 +26,7 @@ public class StaffRepository extends IStaffRepository{
     public Staff getStaffByEmailPassword(String email, String password) {
         ArrayList<Staff> all = MockData.getStaff();
 
-        return all.stream().filter(x -> x.getEmail() == email && x.getPassword() == password).findAny().orElse(null);
+        return all.stream().filter(x -> x.getEmail().equals(email) && x.getPassword().equals(password)).findAny().orElse(null);
     }
 
     @Override

@@ -1,6 +1,9 @@
 package com.example.cafesystem;
 
+import com.example.cafesystem.ViewModels.Enum.Portfolio;
+
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class MockData {
     private static ArrayList<Item> items;
@@ -35,7 +38,14 @@ public class MockData {
 
     public static ArrayList<Staff> getStaff() {
         if(staff == null){
+
             staff = new ArrayList<>();
+            staff.add(new Staff(UUID.randomUUID(), "Visi", "Lesi",
+                    "password","Swansea Uni", Portfolio.Manager, "2126141@swansea.ac.uk"));
+            staff.add(new Staff(UUID.randomUUID(), "Adebayomi", "Farinde",
+                    "password","Swansea Uni", Portfolio.Chef, "2130957@swansea.ac.uk"));
+            staff.add(new Staff(UUID.randomUUID(), "Others", "Students",
+                    "password","Swansea Uni", Portfolio.Driver, "example@swansea.ac.uk"));
         }
 
         return staff;

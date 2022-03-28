@@ -1,5 +1,13 @@
 package com.example.cafesystem;
 
+import com.example.cafesystem.Repository.CustomerRepository;
+import com.example.cafesystem.Repository.ICustomerRepository;
+import com.example.cafesystem.Repository.IStaffRepository;
+import com.example.cafesystem.Repository.StaffRepository;
+import com.example.cafesystem.Services.IUserService;
+import com.example.cafesystem.Services.UserService;
+import com.example.cafesystem.ViewModels.Enum.Portfolio;
+import com.example.cafesystem.ViewModels.StaffViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,10 +21,19 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.UUID;
 
 public class AdminAddStaffController {
 
+    private IUserService _userService;
+    private IStaffRepository _staffRepository;
+    private ICustomerRepository _customerRepository;
+    public AdminAddStaffController(){
+        _staffRepository = new StaffRepository();
+        _customerRepository = new CustomerRepository();
+        _userService = new UserService(_customerRepository, _staffRepository);
 
+    }
 
     @FXML
     private TextField AdminAddStaffEmailText;
@@ -39,7 +56,6 @@ public class AdminAddStaffController {
 
     public void switchToWelcome(ActionEvent event) throws IOException {
 
-
         root = FXMLLoader.load(getClass().getResource("AdminView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -57,12 +73,21 @@ public class AdminAddStaffController {
         String lastName = AdminAddStaffLnameText.getText();
         String password = AdminAddStaffPassWordText.getText();
 
-        //call create method
+        UUID id = _staffRepository.createStaff(new StaffViewModel(null, firstName,
+                lastName, password, "", Portfolio.Driver, email));
 
+        Alert alert = null;
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Registration");
-        alert.setContentText("You have added a staff member successfully");
+        if(id != null){
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Registration");
+            alert.setContentText("You have added a staff member successfully");
+        }
+        else{
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Registration failed");
+            alert.setContentText("Staff could not be added to the system");
+        }
 
         if (alert.showAndWait().get() == ButtonType.OK) {
             //back to welcome
@@ -72,11 +97,6 @@ public class AdminAddStaffController {
             stage.setScene(scene);
             stage.show();
         }
-
-
-
-
-
     }
 
 }

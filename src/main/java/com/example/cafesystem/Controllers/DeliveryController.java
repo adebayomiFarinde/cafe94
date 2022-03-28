@@ -18,7 +18,6 @@ import java.util.ResourceBundle;
 
 public class DeliveryController implements Initializable {
 
-
     @FXML
 
     private TextField addressText;
