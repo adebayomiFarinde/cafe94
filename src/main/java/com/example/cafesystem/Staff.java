@@ -19,7 +19,7 @@ public class Staff extends  Person {
     }
 
     public Staff(UUID id, String fName, String lName, String password, String address, Portfolio portfolio, String email) {
-        super(fName, lName, password, address, email);
+        super(id, fName, lName, password, address, email);
         setPortfolio(portfolio);
     }
 }

@@ -1,5 +1,7 @@
 package com.example.cafesystem;
 
+import java.util.UUID;
+
 public class Person extends BaseEntity {
 
     private String fName;
@@ -8,7 +10,8 @@ public class Person extends BaseEntity {
     private String address;
     private String email;
 
-     public Person(String fName, String lName, String password, String address, String email) {
+     public Person(UUID id, String fName, String lName, String password, String address, String email) {
+         super(id);
          setfName(fName);
          setlName(lName);
          setPassword(password);

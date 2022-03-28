@@ -16,7 +16,7 @@ public class StaffRepository extends IStaffRepository{
         ArrayList<Staff> all = MockData.getStaff();
         UUID newId = UUID.randomUUID();
         all.add(new Staff(newId, staff.getfName(), staff.getlName(),
-                staff.getPassword(), staff.getAddress(), staff.portfolio, staff.getEmail()));
+                staff.getPassword(), staff.getAddress(), staff.getPortfolio(), staff.getEmail()));
 
         MockData.setStaff(all);
 

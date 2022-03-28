@@ -1,11 +1,9 @@
 package com.example.cafesystem;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Order extends BaseEntity {
-
     private UUID customerId;
     private LocalDate orderTime;
     private boolean isApproved;

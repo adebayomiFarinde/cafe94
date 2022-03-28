@@ -14,7 +14,8 @@ public class ItemRepository extends IItemRepository{
         ArrayList<Item> all = MockData.getItems();
         UUID newId = UUID.randomUUID();
         all.add(new Item(newId, item.getStaffId(), item.getItemName(),
-                item.getDescription()));
+                item.getDescription(), item.getItemType()));
+
         MockData.setItems(all);
 
         return newId;

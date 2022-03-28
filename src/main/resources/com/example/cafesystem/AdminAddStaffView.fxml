@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.AdminAddStaffController">
+    <children>
+        <Label fx:id="AdminAddStaffLabel" layoutX="255.0" layoutY="45.0" text="Add Staff" />
+        <Label fx:id="AdminAddStaffViewFNlabel" layoutX="121.0" layoutY="107.0" text="First Name" />
+        <Label layoutX="121.0" layoutY="163.0" text="Last Name" />
+        <Label layoutX="121.0" layoutY="212.0" text="Email" />
+        <Label layoutX="121.0" layoutY="263.0" text="Password" />
+        <TextField fx:id="AdminAddStaffFnameText" layoutX="233.0" layoutY="103.0" />
+        <TextField fx:id="AdminAddStaffLnameText" layoutX="234.0" layoutY="159.0" />
+        <TextField fx:id="AdminAddStaffEmailText" layoutX="234.0" layoutY="208.0" />
+
+      <PasswordField fx:id="AdminAddStaffPassWordText" layoutX="234.0" layoutY="259.0" />
+      <Button fx:id="AdminAddStaffBack" layoutX="146.0" layoutY="318.0" mnemonicParsing="false" onAction="#switchToWelcome" text="Back" />
+      <Button fx:id="AdminAddStaffSubmit" layoutX="257.0" layoutY="318.0" mnemonicParsing="false" onAction="#register" text="Submit" />
+    </children>
+</AnchorPane>

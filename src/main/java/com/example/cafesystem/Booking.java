@@ -12,7 +12,7 @@ public class Booking extends BaseEntity
     private int numberOfGuest;
 
     public Booking(UUID bookingId, String bookingDay, int bookingTime, UUID customerID, int numberOfGuest) {
-        setId(bookingId);
+        super(bookingId);
         this.bookingDay = bookingDay;
         this.bookingTime = bookingTime;
         this.customerID = customerID;

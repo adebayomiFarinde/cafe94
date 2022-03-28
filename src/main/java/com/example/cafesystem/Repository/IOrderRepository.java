@@ -15,4 +15,5 @@ public abstract class IOrderRepository {
     public abstract Order getOrderById(UUID orderId);
     public abstract List<Order> getAllOrdersByDate(LocalDate referencedDate);
     public abstract List<Order> getAllOrderByCustomerId(UUID customerID);
+    public abstract void markOrderAsCompleted(UUID orderId);
 }

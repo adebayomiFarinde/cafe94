@@ -74,4 +74,18 @@ public class OrderRepository extends IOrderRepository{
         return all.stream().filter(x -> x.getCustomerId() == customerID)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void markOrderAsCompleted(UUID orderId) {
+        ArrayList<Order> all = MockData.getOrders();
+        Order order =  getOrderById(orderId);
+
+        int index = all.indexOf(order);
+
+        order.setCompleted(true);
+
+        all.set(index, order);
+
+        MockData.setOrders(all);
+    }
 }

@@ -1,17 +1,29 @@
 package com.example.cafesystem;
 
+import com.example.cafesystem.ViewModels.Enum.ItemType;
+
 import java.util.UUID;
 
 public class Item extends BaseEntity {
     private UUID staffId;
     private String itemName;
     private String description;
+    private ItemType itemType;
 
-    public Item(UUID id, UUID staffId, String itemName, String description){
+    public Item(UUID id, UUID staffId, String itemName, String description, ItemType  itemType){
         super(id);
         this.staffId = staffId;
         this.itemName = itemName;
         this.description = description;
+        this.itemType = itemType;
+    }
+
+    public ItemType getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(ItemType itemType) {
+        this.itemType = itemType;
     }
 
     public UUID getStaffId() {

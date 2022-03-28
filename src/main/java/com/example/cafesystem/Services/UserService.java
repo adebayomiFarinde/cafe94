@@ -14,7 +14,7 @@ public class UserService extends IUserService {
     private ICustomerRepository _customerRepository;
     private IStaffRepository _staffRepository;
     public UserService(ICustomerRepository customerRepository,
-                       IStaffRepository staffRepository){
+                       IStaffRepository staffRepository) {
         _customerRepository = customerRepository;
         _staffRepository = staffRepository;
     }
@@ -43,7 +43,7 @@ public class UserService extends IUserService {
     public UUID createCustomer(String fName, String lName, String email) {
         String password = UUID.randomUUID().toString();
         UUID newId = _customerRepository.createCustomer(
-                new CustomerViewModel("", password, fName, lName, email));
+                new CustomerViewModel(null, "", password, fName, lName, email));
 
         if(newId != null){
 
@@ -58,7 +58,7 @@ public class UserService extends IUserService {
         String password = UUID.randomUUID().toString();
         Portfolio portfolio = Portfolio.Manager;
         UUID newId = _staffRepository.createStaff(
-                new StaffViewModel(password, fName, lName, "", portfolio, email));
+                new StaffViewModel(null, fName, lName, password, "", portfolio, email));
 
         if(newId != null){
             return newId;
@@ -71,7 +71,7 @@ public class UserService extends IUserService {
         try {
 
             _customerRepository.deleteCustomerByEmail(email);
-            
+
             return true;
 
         } catch(Exception ex){
