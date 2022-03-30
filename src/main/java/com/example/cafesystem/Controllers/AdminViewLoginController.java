@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.UUID;
 
 public class AdminViewLoginController {
     private IUserService _userService;
@@ -26,23 +27,19 @@ public class AdminViewLoginController {
         _staffRepository = new StaffRepository();
         _customerRepository = new CustomerRepository();
         _userService = new UserService(_customerRepository, _staffRepository);
-
     }
 
     @FXML
-
     TextField AdminLogInViewEmailTextField;
 
     @FXML
     TextField AdminLogInViewPasswordText;
-
 
     private Stage stage;
 
     private Scene scene;
 
     private Parent root;
-
 
     public void login(ActionEvent event) throws IOException {
 
@@ -55,17 +52,15 @@ public class AdminViewLoginController {
 
             Staff staff = _staffRepository.getStaffByEmailPassword(username, password);
 
+            MockData.setEmail(staff.getEmail());
+            MockData.setfName(staff.getfName());
+            MockData.setlName(staff.getlName());
+            MockData.setStaffId(staff.getId());
+            MockData.setCustomerId(UUID.fromString("00000000-0000-0000-0000-000000000000"));
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminView.fxml"));
 
             root = loader.load();
-
-
-            AdminViewController adminViewController = loader.getController();
-
-            adminViewController.displayName(staff.getfName());
-
-
-            //root = FXMLLoader.load(getClass().getResource("Scene2.fxml"));
 
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

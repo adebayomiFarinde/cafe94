@@ -1,5 +1,6 @@
 package com.example.cafesystem;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 public class Person extends BaseEntity {
@@ -10,8 +11,10 @@ public class Person extends BaseEntity {
     private String address;
     private String email;
 
-     public Person(UUID id, String fName, String lName, String password, String address, String email) {
-         super(id);
+     public Person(UUID id, String fName, String lName,
+                   String password, String address, String email,
+                   boolean isActive, boolean isDeleted, LocalDate createdDate, UUID createdBy ) {
+         super(id, isDeleted, isActive, createdDate, createdBy);
          setfName(fName);
          setlName(lName);
          setPassword(password);

@@ -44,12 +44,7 @@ public class AdminAddMenuController {
     }
 
     public void addMenu(ActionEvent event) throws IOException {
-
-
-
         //call create method
-
-
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Add menu");
         alert.setContentText("You have added a menu Item successfully");
@@ -62,11 +57,6 @@ public class AdminAddMenuController {
             stage.setScene(scene);
             stage.show();
         }
-
-
-
-
-
     }
 
 }

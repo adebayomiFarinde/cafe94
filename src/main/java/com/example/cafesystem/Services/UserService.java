@@ -8,6 +8,7 @@ import com.example.cafesystem.ViewModels.CustomerViewModel;
 import com.example.cafesystem.ViewModels.Enum.Portfolio;
 import com.example.cafesystem.ViewModels.StaffViewModel;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 public class UserService extends IUserService {
@@ -25,7 +26,12 @@ public class UserService extends IUserService {
         if(customer == null){
             return false;
         }
-        return true;
+        else if(!customer.isDeleted() && customer.getActive()){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     @Override
@@ -36,14 +42,20 @@ public class UserService extends IUserService {
             return false;
         }
 
-        return true;
+        else if(!staff.isDeleted() && staff.getActive()){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     @Override
     public UUID createCustomer(String fName, String lName, String email) {
         String password = UUID.randomUUID().toString();
         UUID newId = _customerRepository.createCustomer(
-                new CustomerViewModel(null, "", password, fName, lName, email));
+                new CustomerViewModel(null, "", password, fName, lName,
+                        email, true, false, LocalDate.now(), null));
 
         if(newId != null){
 
@@ -58,7 +70,9 @@ public class UserService extends IUserService {
         String password = UUID.randomUUID().toString();
         Portfolio portfolio = Portfolio.Manager;
         UUID newId = _staffRepository.createStaff(
-                new StaffViewModel(null, fName, lName, password, "", portfolio, email));
+                new StaffViewModel(null, fName, lName, password, "",
+                        portfolio, email, true,
+                        false, LocalDate.now(), null));
 
         if(newId != null){
             return newId;

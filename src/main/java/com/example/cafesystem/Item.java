@@ -2,6 +2,7 @@ package com.example.cafesystem;
 
 import com.example.cafesystem.ViewModels.Enum.ItemType;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 public class Item extends BaseEntity {
@@ -10,8 +11,9 @@ public class Item extends BaseEntity {
     private String description;
     private ItemType itemType;
 
-    public Item(UUID id, UUID staffId, String itemName, String description, ItemType  itemType){
-        super(id);
+    public Item(UUID id, UUID staffId, String itemName, String description, ItemType  itemType,
+                boolean isActive, boolean isDeleted, LocalDate createdDate, UUID createdBy){
+        super(id,isDeleted,  isActive, createdDate, createdBy);
         this.staffId = staffId;
         this.itemName = itemName;
         this.description = description;

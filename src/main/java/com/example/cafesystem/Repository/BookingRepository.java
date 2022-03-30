@@ -3,6 +3,7 @@ import com.example.cafesystem.*;
 import com.example.cafesystem.ViewModels.CreateBooking;
 import com.example.cafesystem.ViewModels.UpdateCreateBooking;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -14,18 +15,26 @@ public class BookingRepository extends IBookingRepository{
     public UUID createBooking(CreateBooking booking) {
         ArrayList<Booking> all = MockData.getBookings();
         UUID newId = UUID.randomUUID();
-        all.add(new Booking(newId, booking.getBookingDay(), booking.getBookingTime(),
-                booking.getCustomerID(), booking.getNumberOfGuest()));
+        all.add(new Booking(newId, booking.getBookingTime(),
+                booking.getCustomerID(), booking.getNumberOfGuest(), false,
+                true, LocalDate.now(), null));
         MockData.setBookings(all);
 
         return newId;
     }
 
     @Override
+    public List<Booking> getAllBookings() {
+        ArrayList<Booking> all = MockData.getBookings();
+
+        return all.stream().filter(x -> !x.isDeleted()).collect(Collectors.toList());
+    }
+
+    @Override
     public List<Booking> getAllBookingByCustomerId(UUID customerID) {
         ArrayList<Booking> all = MockData.getBookings();
 
-        List<Booking> list = all.stream().filter(x -> x.getId() == customerID)
+        List<Booking> list = all.stream().filter(x -> x.getCustomerID().equals(customerID))
                 .collect(Collectors.toList());
 
         list.sort(Comparator.comparing(Booking::getCreatedDate));
@@ -40,9 +49,9 @@ public class BookingRepository extends IBookingRepository{
 
         int index = all.indexOf(booking);
 
-        booking.setBookingDay(updateCreateBooking.bDay);
-        booking.setNumberOfGuest(updateCreateBooking.noGuests);
-        booking.setBookingTime(updateCreateBooking.dTime);
+        booking.setBookingTime(updateCreateBooking.getBookingTime());
+        booking.setNumberOfGuest(updateCreateBooking.getNumberOfGuest());
+        booking.setModifiedBy(updateCreateBooking.getCreatedBy());
 
         all.set(index, booking);
 
@@ -54,7 +63,7 @@ public class BookingRepository extends IBookingRepository{
     @Override
     public void deleteBooking(UUID bookingId) {
         ArrayList<Booking> all = MockData.getBookings();
-        all.removeIf(x -> x.getId() == bookingId);
+        all.removeIf(x -> x.getId().equals(bookingId));
 
         MockData.setBookings(all);
 
@@ -65,6 +74,6 @@ public class BookingRepository extends IBookingRepository{
     public Booking getBookingId(UUID bookingId) {
         ArrayList<Booking> all = MockData.getBookings();
 
-        return all.stream().filter(x -> x.getId() == bookingId).findAny().orElse(null);
+        return all.stream().filter(x -> x.getId().equals(bookingId)).findAny().orElse(null);
     }
 }

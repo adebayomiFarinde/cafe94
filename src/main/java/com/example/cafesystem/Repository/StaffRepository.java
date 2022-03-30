@@ -7,21 +7,46 @@ import com.example.cafesystem.Staff;
 import com.example.cafesystem.ViewModels.StaffViewModel;
 import com.example.cafesystem.ViewModels.UpdateStaffViewModel;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class StaffRepository extends IStaffRepository{
     @Override
     public UUID createStaff(StaffViewModel staff) {
         ArrayList<Staff> all = MockData.getStaff();
-        UUID newId = UUID.randomUUID();
-        all.add(new Staff(newId, staff.getfName(), staff.getlName(),
-                staff.getPassword(), staff.getAddress(), staff.getPortfolio(), staff.getEmail()));
 
-        MockData.setStaff(all);
+        try {
+            UUID newId = UUID.randomUUID();
+            all.add(new Staff(newId, staff.getfName(), staff.getlName(),
+                    staff.getPassword(), staff.getAddress(), staff.getPortfolio(), staff.getEmail(),
+                    true, false, LocalDate.now(), UUID.randomUUID()));
 
-        return newId;
+            MockData.setStaff(all);
+
+            return newId;
+
+        } catch (Exception ex){
+            return null;
+        }
+
     }
+
+    @Override
+    public int numberOfActiveStaff() {
+        List<Staff> list = MockData.getStaff();
+        int count =0;
+
+        for(Staff staff : list){
+            if(staff.getActive() && !staff.isDeleted()){
+                count ++;
+            }
+        }
+
+        return count;
+    }
+
     @Override
     public Staff getStaffByEmailPassword(String email, String password) {
         ArrayList<Staff> all = MockData.getStaff();
@@ -51,7 +76,7 @@ public class StaffRepository extends IStaffRepository{
     @Override
     public void deleteStaff(UUID staffId) {
         ArrayList<Staff> all = MockData.getStaff();
-        all.removeIf(x -> x.getId() == staffId);
+        all.removeIf(x -> x.getId().equals(staffId));
 
         MockData.setStaff(all);
 
@@ -62,7 +87,7 @@ public class StaffRepository extends IStaffRepository{
     public void deleteStaffByEmail(String email) {
         ArrayList<Staff> all = MockData.getStaff();
 
-        Staff staff = all.stream().filter(x -> x.getEmail() == email).findAny().orElse(null);
+        Staff staff = all.stream().filter(x -> x.getEmail().equals(email)).findAny().orElse(null);
 
         if(staff != null){
             deleteStaff(staff.getId());
@@ -73,6 +98,6 @@ public class StaffRepository extends IStaffRepository{
     public Staff getStaffId(UUID staffId) {
         ArrayList<Staff> all = MockData.getStaff();
 
-        return all.stream().filter(x -> x.getId() == staffId).findAny().orElse(null);
+        return all.stream().filter(x -> x.getId().equals(staffId)).findAny().orElse(null);
     }
 }

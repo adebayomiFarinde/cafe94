@@ -17,11 +17,13 @@ public class OrderRepository extends IOrderRepository{
         ArrayList<Order> all = MockData.getOrders();
         UUID newId = UUID.randomUUID();
         all.add(new Order(newId, order.getCustomerId(), order.getOrderTime(),
-                order.getApproved(), order.getCompleted()));
+                order.getApproved(), order.getCompleted(),
+                false, true, LocalDate.now(), null));
 
         MockData.setOrders(all);
 
-        return newId;    }
+        return newId;
+    }
 
     @Override
     public void updateOrder(UUID orderId, UpdateOrder updateOrder) {
@@ -43,7 +45,7 @@ public class OrderRepository extends IOrderRepository{
     @Override
     public void deleteOrder(UUID orderId) {
         ArrayList<Order> all = MockData.getOrders();
-        all.removeIf(x -> x.getId() == orderId);
+        all.removeIf(x -> x.getId().equals(orderId));
 
         MockData.setOrders(all);
 
@@ -54,7 +56,7 @@ public class OrderRepository extends IOrderRepository{
     public Order getOrderById(UUID orderId) {
         ArrayList<Order> all = MockData.getOrders();
 
-        return all.stream().filter(x -> x.getId() == orderId)
+        return all.stream().filter(x -> x.getId().equals(orderId))
                 .findAny().orElse(null);
     }
 
@@ -62,7 +64,7 @@ public class OrderRepository extends IOrderRepository{
     public List<Order> getAllOrdersByDate(LocalDate referencedDate) {
         ArrayList<Order> all = MockData.getOrders();
 
-        return all.stream().filter(x -> x.getOrderTime() == referencedDate)
+        return all.stream().filter(x -> x.getOrderTime().equals(referencedDate))
                 .collect(Collectors.toList());
 
     }
@@ -71,7 +73,7 @@ public class OrderRepository extends IOrderRepository{
     public List<Order> getAllOrderByCustomerId(UUID customerID) {
         ArrayList<Order> all = MockData.getOrders();
 
-        return all.stream().filter(x -> x.getCustomerId() == customerID)
+        return all.stream().filter(x -> x.getCustomerId().equals(customerID))
                 .collect(Collectors.toList());
     }
 

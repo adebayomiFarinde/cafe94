@@ -2,6 +2,7 @@ package com.example.cafesystem;
 
 import com.example.cafesystem.ViewModels.Enum.Portfolio;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 //Staff
@@ -18,8 +19,10 @@ public class Staff extends  Person {
         this.portfolio = portfolio;
     }
 
-    public Staff(UUID id, String fName, String lName, String password, String address, Portfolio portfolio, String email) {
-        super(id, fName, lName, password, address, email);
+    public Staff(UUID id, String fName, String lName, String password,
+                 String address, Portfolio portfolio, String email,
+                 boolean isActive, boolean isDeleted, LocalDate createdDate, UUID createdBy) {
+        super(id, fName, lName, password, address, email, isActive, isDeleted, createdDate, createdBy);
         setPortfolio(portfolio);
     }
 }

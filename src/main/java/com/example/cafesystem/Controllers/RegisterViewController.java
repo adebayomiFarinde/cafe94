@@ -1,5 +1,12 @@
 package com.example.cafesystem;
 
+import com.example.cafesystem.Repository.CustomerRepository;
+import com.example.cafesystem.Repository.ICustomerRepository;
+import com.example.cafesystem.Repository.IStaffRepository;
+import com.example.cafesystem.Repository.StaffRepository;
+import com.example.cafesystem.Services.IUserService;
+import com.example.cafesystem.Services.UserService;
+import com.example.cafesystem.ViewModels.CustomerViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,9 +19,19 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.UUID;
 
 public class RegisterViewController {
+    private IUserService _userService;
+    private IStaffRepository _staffRepository;
+    private ICustomerRepository _customerRepository;
+    public RegisterViewController(){
+        _staffRepository = new StaffRepository();
+        _customerRepository = new CustomerRepository();
+        _userService = new UserService(_customerRepository, _staffRepository);
 
+    }
 
     @FXML
     private Stage stage;
@@ -41,12 +58,21 @@ public class RegisterViewController {
         String lastName = RegisterViewLastNameText.getText();
         String password = RegisterViewPasswordText.getText();
 
-        //call create method
+        UUID id = _customerRepository.createCustomer(new CustomerViewModel(null, firstName, lastName, password, "",
+                email, true, false, LocalDate.now(), null));
 
+        Alert alert = null;
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Registration");
-        alert.setContentText("You have registered successfully, now you can log in");
+        if(!id.equals(null)){
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Registration");
+            alert.setContentText("You have added new customer successfully");
+        }
+        else{
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Registration failed");
+            alert.setContentText("Customer could not be added to the system");
+        }
 
         if (alert.showAndWait().get() == ButtonType.OK) {
             //back to welcome
@@ -56,7 +82,6 @@ public class RegisterViewController {
             stage.setScene(scene);
             stage.show();
         }
-
 
     }
 

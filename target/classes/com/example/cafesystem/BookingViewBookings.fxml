@@ -14,7 +14,7 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <ListView fx:id="BookingViewBookingsList" layoutX="194.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="BookingViewBookingsList" layoutX="194.0" layoutY="100.0" prefHeight="200.0" prefWidth="300.0" />
       <Button fx:id="BookingViewBookingsBack" layoutX="248.0" layoutY="336.0" mnemonicParsing="false" onAction="#switchToBookingView" text="Back" />
    </children>
 </AnchorPane>

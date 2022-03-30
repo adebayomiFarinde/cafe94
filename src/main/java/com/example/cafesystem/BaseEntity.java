@@ -7,9 +7,27 @@ public class BaseEntity {
     private UUID id;
     private boolean isDeleted;
     private LocalDate createdDate;
+    private boolean isActive;
+    private UUID createdBy;
+    private LocalDate modifiedDate;
+    private UUID modifiedBy;
 
-    public BaseEntity(UUID id){
+    public boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public BaseEntity(UUID id, boolean isDeleted,
+                      boolean isActive, LocalDate createdDate, UUID createdBy){
+
         this.id = id;
+        this.isActive = isActive;
+        this.isDeleted = isDeleted;
+        this.createdDate = createdDate;
+        this.createdBy = createdBy;
     }
 
     public UUID getId() {
@@ -59,8 +77,4 @@ public class BaseEntity {
     public void setModifiedBy(UUID modifiedBy) {
         this.modifiedBy = modifiedBy;
     }
-
-    private UUID createdBy;
-    private LocalDate modifiedDate;
-    private UUID modifiedBy;
 }

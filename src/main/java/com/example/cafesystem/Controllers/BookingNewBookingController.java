@@ -50,11 +50,7 @@ public class BookingNewBookingController {
 
     public void makeBooking(ActionEvent event) throws IOException {
 
-
-
         //call create method
-
-
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("New Booking");
         alert.setContentText("You have booked successfully");
@@ -68,12 +64,5 @@ public class BookingNewBookingController {
             stage.show();
         }
 
-
-
-
-
     }
-
-
-
 }

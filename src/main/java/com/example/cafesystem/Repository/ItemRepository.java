@@ -3,6 +3,7 @@ package com.example.cafesystem.Repository;
 import com.example.cafesystem.*;
 import com.example.cafesystem.ViewModels.ItemViewModel;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -14,7 +15,9 @@ public class ItemRepository extends IItemRepository{
         ArrayList<Item> all = MockData.getItems();
         UUID newId = UUID.randomUUID();
         all.add(new Item(newId, item.getStaffId(), item.getItemName(),
-                item.getDescription(), item.getItemType()));
+                item.getDescription(),
+                item.getItemType(), true,
+                false, LocalDate.now(), null));
 
         MockData.setItems(all);
 
@@ -25,7 +28,7 @@ public class ItemRepository extends IItemRepository{
     @Override
     public void deleteItem(UUID itemId) {
         ArrayList<Item> all = MockData.getItems();
-        all.removeIf(x -> x.getId() == itemId);
+        all.removeIf(x -> x.getId().equals(itemId));
 
         MockData.setItems(all);
 
@@ -45,6 +48,6 @@ public class ItemRepository extends IItemRepository{
     public Item getItemId(UUID itemId) {
         ArrayList<Item> all = MockData.getItems();
 
-        return all.stream().filter(x -> x.getId() == itemId).findAny().orElse(null);
+        return all.stream().filter(x -> x.getId().equals(itemId)).findAny().orElse(null);
     }
 }

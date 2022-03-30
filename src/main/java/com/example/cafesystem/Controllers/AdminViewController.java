@@ -59,36 +59,23 @@ public class AdminViewController implements Initializable {
     @FXML
     private TextField AdminViewTextField;
 
-
-
     String[] reports = {"Most Popular Item", "Most active customer", "Number of active staff"};
     String currentReport;
 
 
     private String[] dummy = {"dog", "dog", "cat", "lion"};
 
-
-    public void displayName(String username) {
-        AdminViewHelloLabel.setText("Hello " + username);
-    }
-
-
     public void switchToWelcome(ActionEvent event) throws IOException {
-
-
         root = FXMLLoader.load(getClass().getResource("welcomeView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
+        AdminViewHelloLabel.setText("Hello " + MockData.getfName() + " "+ MockData.getlName() );
         reportsListView.getItems().addAll(reports);
 
         reportsListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -100,14 +87,16 @@ public class AdminViewController implements Initializable {
 
                 switch (currentReport) {
                     case "Most Popular Item":
-                        AdminViewTextField.setText(dummy[0]);
+
+                        AdminViewTextField.setText(dummy[1]);
                         break;
                     case "Most active customer":
                         AdminViewTextField.setText(dummy[2]);
-
+                    case "Number of active staff":
+                        Integer result = _staffRepository.numberOfActiveStaff();
+                        AdminViewTextField.setText(result.toString());
 
                 }
-
 
                 chosenReport.setText(currentReport);
             }

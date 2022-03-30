@@ -13,8 +13,8 @@ public class Order extends BaseEntity {
     UUID customerId,
     LocalDate orderTime,
     boolean isApproved,
-    boolean completed){
-        super(itemId);
+    boolean completed, boolean isDeleted, boolean isActive, LocalDate createdDate, UUID createdBy) {
+        super(itemId, isDeleted, isActive, createdDate, createdBy);
         this.completed = completed;
         this.customerId = customerId;
         this.orderTime = orderTime;

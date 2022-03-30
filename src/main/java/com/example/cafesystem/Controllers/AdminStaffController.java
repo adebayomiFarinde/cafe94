@@ -53,7 +53,6 @@ public class AdminStaffController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         List<Staff> staff = MockData.getStaff();
 
         ArrayList<String> staffNames = new ArrayList<>();
@@ -62,16 +61,11 @@ public class AdminStaffController implements Initializable {
         AdminStaffViewList.getItems().addAll(staffNames);
     }
 
-
     public void switchAdminView(ActionEvent event) throws IOException {
-
-
         root = FXMLLoader.load(getClass().getResource("AdminView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
 }

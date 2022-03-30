@@ -14,4 +14,5 @@ public abstract class IStaffRepository {
     public abstract Staff getStaffId(UUID staffId);
     public abstract void deleteStaffByEmail(String email);
     public abstract Staff getStaffByEmailPassword(String email, String password);
+    public abstract int numberOfActiveStaff();
 }

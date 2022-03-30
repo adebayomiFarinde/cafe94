@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.UUID;
 
 public class AdminAddStaffController {
@@ -74,11 +75,12 @@ public class AdminAddStaffController {
         String password = AdminAddStaffPassWordText.getText();
 
         UUID id = _staffRepository.createStaff(new StaffViewModel(null, firstName,
-                lastName, password, "", Portfolio.Driver, email));
+                lastName, password, "", Portfolio.Driver, email, true,
+                false, LocalDate.now(), null));
 
         Alert alert = null;
 
-        if(id != null){
+        if(!id.equals(null)){
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Registration");
             alert.setContentText("You have added a staff member successfully");
