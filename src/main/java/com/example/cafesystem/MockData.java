@@ -5,11 +5,10 @@ import com.example.cafesystem.ViewModels.Enum.Portfolio;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class MockData {
-    private static ArrayList<Item> items;
+    private static ArrayList<Menu> menu;
     private static ArrayList<Staff> staff;
     private static ArrayList<Customer> customers;
     private static ArrayList<Booking> bookings;
@@ -29,6 +28,7 @@ public class MockData {
     }
 
     public static ArrayList<UUID> allUUID(){
+
         ArrayList guidList = new ArrayList<UUID>();
         guidList.add(UUID.fromString("123e4567-e89b-42d3-a456-556642440000"));
         guidList.add(UUID.fromString("123e4967-e89b-42d3-a456-556642440000"));
@@ -37,6 +37,10 @@ public class MockData {
         guidList.add(UUID.fromString("123e4567-e89b-42d3-a456-556642440670"));
         guidList.add(UUID.fromString("123e4567-e89b-42d3-a456-556642440670"));
         guidList.add(UUID.fromString("132e4567-e89b-42d3-a456-556642440670"));
+        guidList.add(UUID.fromString("123e3467-e89b-42d3-a456-554442440000"));
+        guidList.add(UUID.fromString("123e4542-e89b-42d3-a456-556642440670"));
+        guidList.add(UUID.fromString("123f4567-e89b-42d3-a456-556642440670"));
+        guidList.add(UUID.fromString("132e4567-e89b-85d3-a456-556642440670"));
 
         return guidList;
     }
@@ -73,12 +77,30 @@ public class MockData {
         MockData.email = email;
     }
 
-    public static ArrayList<Item> getItems() {
-        return items;
+    public static ArrayList<Menu> getMenu() {
+
+        if(menu == null){
+            menu = new ArrayList<>();
+
+            menu.add(new Menu(allUUID().get(3), "Hot Pie", "With Water",
+                    true, false, LocalDate.now(), UUID.randomUUID()));
+            menu.add(new Menu(allUUID().get(4), "Shawarma", "With Juice",
+                    true, false, LocalDate.now(), UUID.randomUUID()));
+            menu.add(new Menu(allUUID().get(5),  "Hot Dog", "With Biggie Coke",
+                    true, false, LocalDate.now(), UUID.randomUUID()));
+            menu.add(new Menu(allUUID().get(6), "Peperoni", "With Fanta",
+                    true, false, LocalDate.now(), UUID.randomUUID()));
+            menu.add(new Menu(allUUID().get(7), "Small Bugger", "With Creamie Juice",
+                    true, false, LocalDate.now(), UUID.randomUUID()));
+            menu.add(new Menu(allUUID().get(8),  "Big Mac", "With Coke",
+                    true, false, LocalDate.now(), UUID.randomUUID()));
+        }
+
+        return menu;
     }
 
-    public static void setItems(ArrayList<Item> items) {
-        MockData.items = items;
+    public static void setMenu(ArrayList<Menu> menu) {
+        MockData.menu = menu;
     }
 
     public static void setStaff(ArrayList<Staff> staff) {
@@ -135,6 +157,7 @@ public class MockData {
     }
 
     public static ArrayList<Booking> getBookings() {
+
         if(bookings == null){
             bookings = new ArrayList<>();
             bookings.add(new Booking(UUID.randomUUID(), LocalDateTime.now(), allUUID().get(3),
@@ -153,9 +176,11 @@ public class MockData {
     }
 
     public static ArrayList<Order> getOrders() {
+
         if(orders == null){
             orders = new ArrayList<>();
         }
+
         return orders;
     }
 }

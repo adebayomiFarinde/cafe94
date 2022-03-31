@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class UpdateOrder extends Order {
-    public UpdateOrder(UUID itemId, UUID customerId, LocalDate orderTime, boolean isApproved, boolean completed, boolean isActive, boolean isDeleted, LocalDate createdDate, UUID createdBy){
-        super(itemId, customerId, orderTime, isApproved, completed, isDeleted,  isActive, createdDate, createdBy);
+    public UpdateOrder(UUID itemId, UUID menuId, UUID customerId, LocalDate orderTime, boolean isApproved, boolean completed, boolean isActive, boolean isDeleted, LocalDate createdDate, UUID createdBy){
+        super(itemId, menuId, customerId, orderTime, isApproved, completed, isDeleted,  isActive, createdDate, createdBy);
     }
 }

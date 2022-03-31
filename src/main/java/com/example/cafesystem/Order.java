@@ -4,17 +4,25 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public class Order extends BaseEntity {
+    private UUID orderId;
+    private UUID menuId;
     private UUID customerId;
     private LocalDate orderTime;
     private boolean isApproved;
     private boolean completed;
 
-    public Order(UUID itemId,
-    UUID customerId,
-    LocalDate orderTime,
-    boolean isApproved,
-    boolean completed, boolean isDeleted, boolean isActive, LocalDate createdDate, UUID createdBy) {
-        super(itemId, isDeleted, isActive, createdDate, createdBy);
+    public UUID getMenuId() {
+        return menuId;
+    }
+
+    public void setMenuId(UUID menuId) {
+        this.menuId = menuId;
+    }
+
+    public Order(UUID orderId, UUID menuId,
+                 UUID customerId, LocalDate orderTime, boolean isApproved,
+                 boolean completed, boolean isDeleted, boolean isActive, LocalDate createdDate, UUID createdBy) {
+        super(orderId, isDeleted, isActive, createdDate, createdBy);
         this.completed = completed;
         this.customerId = customerId;
         this.orderTime = orderTime;

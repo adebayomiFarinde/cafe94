@@ -7,18 +7,18 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.AdminAddMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: deepskyblue;" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.AdminAddMenuController">
    <children>
-      <Label fx:id="AdminAddMenuLabel" layoutX="227.0" layoutY="67.0" text="Add Menu">
+      <Label fx:id="AdminAddMenuLabel" style="-fx-font-weight: bold;" layoutX="255.0" layoutY="45.0" text="Add Menu">
          <font>
-            <Font size="21.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="AdminAddMenuBack" layoutX="207.0" layoutY="341.0" mnemonicParsing="false" onAction="#switchToAdminView" text="Back" />
+      <Button fx:id="AdminAddMenuBack" layoutX="179.0" layoutY="341.0" mnemonicParsing="false" onAction="#switchToAdminView" text="Back" />
       <Button fx:id="AdminAddMenuSubmit" layoutX="276.0" layoutY="341.0" mnemonicParsing="false" onAction="#addMenu" text="Submit" />
-      <Label layoutX="179.0" layoutY="146.0" prefHeight="26.0" prefWidth="41.0" text="Menu " />
-      <Label layoutX="174.0" layoutY="191.0" text="Item To Add" />
-      <TextField fx:id="AdminAddMenuText" layoutX="276.0" layoutY="147.0" />
-      <TextField fx:id="AdminAddMenuItemText" layoutX="277.0" layoutY="188.0" />
+      <Label layoutX="179.0" layoutY="146.0" prefHeight="26.0" prefWidth="41.0" text="Name" />
+      <Label layoutX="179.0" layoutY="191.0" text="Description" />
+      <TextField fx:id="AdminAddMenuNameText" layoutX="277.0" layoutY="147.0" />
+      <TextField fx:id="AdminAddMenuDescriptionText" layoutX="277.0" layoutY="188.0" />
    </children>
 </AnchorPane>

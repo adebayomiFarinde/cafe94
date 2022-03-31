@@ -6,10 +6,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.AdminViewMenuController">
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: deepskyblue;" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.AdminViewMenuController">
    <children>
-      <Label fx:id="AdminViewMenuLabel" layoutX="256.0" layoutY="49.0" text="Menu List" />
+      <Label fx:id="AdminViewMenuLabel" layoutX="256.0" style="-fx-font-weight: bold;" layoutY="49.0" text="Menu List" >
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
       <ListView fx:id="AdminViewMenuList" layoutX="182.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button fx:id="AdminViewMenuBack" layoutX="256.0" layoutY="336.0" mnemonicParsing="false" onAction="#switchToAdminView" text="Back" />
+      <Button fx:id="AdminViewMenuBack" layoutX="182.0" layoutY="336.0" mnemonicParsing="false" onAction="#switchToAdminView" text="Back" />
    </children>
 </AnchorPane>

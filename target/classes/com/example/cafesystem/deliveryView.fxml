@@ -6,15 +6,21 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.DeliveryController">
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: deepskyblue;" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.DeliveryController">
     <children>
         <ListView fx:id="foodListViewDelivery" layoutX="83.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
-        <Label fx:id="deliveryViewLabel" layoutX="161.0" layoutY="32.0" text="Select Food" />
-        <Button fx:id="deliveryViewBack" layoutX="45.0" layoutY="326.0" mnemonicParsing="false" onAction="#switchToCustomerView" text="Back" />
-        <Button fx:id="deliveryViewLogOut" layoutX="166.0" layoutY="326.0" mnemonicParsing="false" onAction="#switchToWelcome" text="Log Out" />
-        <Button fx:id="makeOrderButtonDelivery" layoutX="390.0" layoutY="326.0" mnemonicParsing="false" onAction="#makeOrderDelivery" text="Make Order" />
+        <Label fx:id="deliveryViewLabel" layoutX="83.0" layoutY="70.9" text="Select Food" >
+        </Label>
+        <Label fx:id="deliveryViewPageLabel" style="-fx-font-weight: bold;" layoutX="255.0" layoutY="45.0" text="Delivery" >
+            <font>
+                <Font size="15"></Font>
+            </font>
+        </Label>
+        <Button fx:id="deliveryViewBack" layoutX="83.0" layoutY="326.0" mnemonicParsing="false" onAction="#switchToCustomerView" text="Back" />
+        <Button fx:id="makeOrderButtonDelivery" layoutX="166.0" layoutY="326.0" mnemonicParsing="false" onAction="#makeOrderDelivery" text="Make Order" />
         <Label fx:id="showOrderLabelDelivery" layoutX="402.0" layoutY="107.0" />
-        <Label fx:id="addressLabel" layoutX="300.0" layoutY="149.0" text="Enter your address" />
+        <Label fx:id="addressLabel" layoutX="300.0" layoutY="149.0" text="Enter Address" />
         <TextField fx:id="addressText" layoutX="402.0" layoutY="145.0" />
     </children>
 </AnchorPane>

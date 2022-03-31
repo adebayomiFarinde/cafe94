@@ -16,7 +16,7 @@ public class OrderRepository extends IOrderRepository{
     public UUID createOrder(OrderViewModel order) {
         ArrayList<Order> all = MockData.getOrders();
         UUID newId = UUID.randomUUID();
-        all.add(new Order(newId, order.getCustomerId(), order.getOrderTime(),
+        all.add(new Order(newId, order.getMenuId(), order.getCustomerId(), order.getOrderTime(),
                 order.getApproved(), order.getCompleted(),
                 false, true, LocalDate.now(), null));
 

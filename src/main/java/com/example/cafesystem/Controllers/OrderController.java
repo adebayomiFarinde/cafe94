@@ -45,64 +45,32 @@ public class OrderController  implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         foodListView.getItems().addAll(food);
-
-
-
         foodListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-
-
-
             @Override
-
             public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
-
-
-
                 currentFood = foodListView.getSelectionModel().getSelectedItem();
-
-
-
                 showOrderLabel.setText("Current choice " + currentFood);
-
-
-
             }
-
         });
-
-
-
     }
 
-
-
-
     public void switchToCustomerView (ActionEvent event) throws IOException {
-
         root = FXMLLoader.load(getClass().getResource("CustomerView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
 
     public void switchToWelcome (ActionEvent event) throws IOException {
-
         root = FXMLLoader.load(getClass().getResource("welcomeView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
 
-
-
     public void makeOrder(ActionEvent event) throws IOException {
-
-
-
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("TakeAway Order");
         alert.setContentText("Your order will be ready by " + timeText.getText());
@@ -116,10 +84,5 @@ public class OrderController  implements Initializable {
             stage.setScene(scene);
             stage.show();
         }
-
-
     }
-
-
-
 }

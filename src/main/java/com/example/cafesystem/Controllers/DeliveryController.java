@@ -1,5 +1,10 @@
 package com.example.cafesystem;
 
+import com.example.cafesystem.Repository.*;
+import com.example.cafesystem.Services.IUserService;
+import com.example.cafesystem.Services.UserService;
+import com.example.cafesystem.ViewModels.MenuViewModel;
+import com.example.cafesystem.ViewModels.OrderViewModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -14,12 +19,22 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 public class DeliveryController implements Initializable {
+    private IMenuRepository _menuRepository;
+    private IOrderRepository _orderRepository;
+
+    public DeliveryController(){
+        _menuRepository = new MenuRepository();
+        _orderRepository = new OrderRepository();
+    }
 
     @FXML
-
     private TextField addressText;
 
     @FXML
@@ -28,10 +43,7 @@ public class DeliveryController implements Initializable {
     @FXML
     private Label showOrderLabelDelivery;
 
-    String[] food = {"Big Mac", "Stake", "Chicken Fillet"};
-
     String currentFood;
-
 
     private Stage stage;
 
@@ -46,7 +58,6 @@ public class DeliveryController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
 
     public void switchToWelcome(ActionEvent event) throws IOException {
@@ -56,54 +67,51 @@ public class DeliveryController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
-
 
     public void makeOrderDelivery(ActionEvent event) throws IOException {
+        String textString = showOrderLabelDelivery.getText();
+        if(!textString.equals("")) {
+            Menu menu = _menuRepository.getMenuByName(showOrderLabelDelivery.getText());
 
+            if(menu != null) {
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("TakeAway Order");
-        alert.setContentText("Your order will be delivered to " + addressText.getText());
+                UUID id = _orderRepository.createOrder(new OrderViewModel(null,
+                        menu.getId(), MockData.getCustomerId(),
+                        LocalDate.now(), false,false, true,
+                        false, LocalDate.now(), MockData.getCustomerId()));
 
-        if (alert.showAndWait().get() == ButtonType.OK) {
-            //back to welcome
-            root = FXMLLoader.load(getClass().getResource("customerView.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("TakeAway Order");
+                alert.setContentText("Your order will be delivered to " + addressText.getText());
+
+                if (alert.showAndWait().get() == ButtonType.OK) {
+                    //back to welcome
+                    root = FXMLLoader.load(getClass().getResource("customerView.fxml"));
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }
+            }
         }
-
-
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<Menu> list = _menuRepository.getAllMenu();
+        ArrayList<String> food = new ArrayList<>();
+
+        list.forEach(x-> food.add(x.getName()));
 
         foodListViewDelivery.getItems().addAll(food);
 
-
         foodListViewDelivery.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-
-
             @Override
-
             public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
-
-
                 currentFood = foodListViewDelivery.getSelectionModel().getSelectedItem();
-
-
-                showOrderLabelDelivery.setText("Current choice " + currentFood);
-
-
+                showOrderLabelDelivery.setText(currentFood);
             }
-
         });
-
-
     }
 }

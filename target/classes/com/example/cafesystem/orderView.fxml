@@ -6,13 +6,18 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.OrderController">
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: deepskyblue;" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.OrderController">
    <children>
       <ListView fx:id="foodListView" layoutX="83.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
-      <Label fx:id="orderViewLabel" layoutX="161.0" layoutY="32.0" text="Select Food" />
-      <Button fx:id="orderViewBack" layoutX="45.0" layoutY="326.0" mnemonicParsing="false" onAction="#switchToCustomerView" text="Back" />
-      <Button fx:id="orderViewLogOut" layoutX="166.0" layoutY="326.0" mnemonicParsing="false" onAction="#switchToWelcome" text="Log Out" />
-      <Button fx:id="makeOrderButton" layoutX="390.0" layoutY="326.0" mnemonicParsing="false" onAction="#makeOrder" text="Make Order" />
+      <Label fx:id="orderViewPageLabel" style="-fx-font-weight: bold;" layoutX="255.0" layoutY="45.0" text="Take away" >
+         <font>
+            <Font size="15"></Font>
+         </font>
+      </Label>
+      <Label fx:id="orderViewLabel" layoutX="83.0" layoutY="70.9" text="Select Food" />
+      <Button fx:id="orderViewBack" layoutX="83.0" layoutY="326.0" mnemonicParsing="false" onAction="#switchToCustomerView" text="Back" />
+      <Button fx:id="makeOrderButton" layoutX="166.0" layoutY="326.0" mnemonicParsing="false" onAction="#makeOrder" text="Book Takeaway" />
       <Label fx:id="showOrderLabel" layoutX="402.0" layoutY="107.0" />
       <Label fx:id="timeLabel" layoutX="330.0" layoutY="149.0" text="Pickup Time" />
       <TextField fx:id="timeText" layoutX="402.0" layoutY="145.0" />

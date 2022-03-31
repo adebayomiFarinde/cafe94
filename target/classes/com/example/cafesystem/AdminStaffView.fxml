@@ -7,14 +7,14 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.AdminStaffController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" style="-fx-background-color: deepskyblue;" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.AdminStaffController">
    <children>
-      <Label fx:id="AdminStaffViewLabel" layoutX="220.0" layoutY="36.0" text="Staff List">
+      <Label fx:id="AdminStaffViewLabel" style="-fx-font-weight: bold;" layoutX="256.0" layoutY="80.0" text="Staff List">
          <font>
-            <Font size="30.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <ListView fx:id="AdminStaffViewList" layoutX="186.0" layoutY="117.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button fx:id="AdminStaffViewBack" layoutX="251.0" layoutY="347.0" mnemonicParsing="false" onAction="#switchAdminView" text="Back " />
+      <Button fx:id="AdminStaffViewBack" layoutX="186.0" layoutY="347.0" mnemonicParsing="false" onAction="#switchAdminView" text="Back " />
    </children>
 </AnchorPane>
