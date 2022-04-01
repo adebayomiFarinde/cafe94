@@ -19,4 +19,5 @@ public abstract class ITakeawayRepository {
     public abstract List<Takeaway> getAllTakeawayByCustomerId(UUID customerID);
     public abstract void markOrderAsCompleted(UUID orderId);
     public abstract List<Takeaway> getAllTakeaway();
+    public abstract void deleteTakeawayByReferenceCode(String referenceCode);
 }

@@ -112,4 +112,29 @@ public class BookingViewBookingsController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+
+    public void handleDeleteBooking(ActionEvent event) throws Exception {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Delete Menu");
+        alert.setContentText("The selected menu will be deleted");
+
+        try {
+
+            if (alert.showAndWait().get() == ButtonType.OK) {
+                TableSelectionModel<BookingVM> booking = tableView.getSelectionModel();
+                _bookingRepository.deleteBookingByReferenceCode(booking.getSelectedItem().getReferenceCode());
+
+                root = FXMLLoader.load(getClass().getResource("bookingViewBookings.fxml"));
+
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+
+        }catch (Exception ex){
+            alert.close();
+        }
+    }
 }

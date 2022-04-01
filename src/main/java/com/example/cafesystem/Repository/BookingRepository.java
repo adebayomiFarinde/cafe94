@@ -35,6 +35,14 @@ public class BookingRepository extends IBookingRepository{
     }
 
     @Override
+    public void deleteBookingByReferenceCode(String referenceCode) {
+        ArrayList<Booking> all = MockData.getBookings();
+        all.removeIf(x -> x.getReferenceCode().equals(referenceCode));
+
+        MockData.setBookings(all);
+    }
+
+    @Override
     public List<Booking> getAllBookingByCustomerId(UUID customerID) {
         ArrayList<Booking> all = MockData.getBookings();
 
@@ -70,8 +78,6 @@ public class BookingRepository extends IBookingRepository{
         all.removeIf(x -> x.getId().equals(bookingId));
 
         MockData.setBookings(all);
-
-        return;
     }
 
     @Override

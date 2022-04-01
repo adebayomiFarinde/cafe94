@@ -97,4 +97,12 @@ public class TakeawayRepository extends ITakeawayRepository{
 
         return all.stream().filter(x -> !x.getIsDeleted()).collect(Collectors.toList());
     }
+
+    @Override
+    public void deleteTakeawayByReferenceCode(String referenceCode) {
+        ArrayList<Takeaway> all = MockData.getTakeaways();
+        all.removeIf(x -> x.getReferenceCode().equals(referenceCode));
+
+        MockData.setTakeaways(all);
+    }
 }

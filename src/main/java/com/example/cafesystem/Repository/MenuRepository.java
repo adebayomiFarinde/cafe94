@@ -57,4 +57,12 @@ public class MenuRepository extends IMenuRepository{
         return all.stream().filter(x -> x.getName()
                 .equals(menuName)).findAny().orElse(null);
     }
+
+    @Override
+    public void deleteMenuByName(String menuName) {
+        ArrayList<Menu> all = MockData.getMenu();
+        all.removeIf(x -> x.getName().equals(menuName));
+
+        MockData.setMenu(all);
+    }
 }

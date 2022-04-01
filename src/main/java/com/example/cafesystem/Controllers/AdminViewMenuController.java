@@ -9,8 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -55,5 +54,28 @@ public class AdminViewMenuController implements Initializable {
         ArrayList<String> menuList = new ArrayList<>();
         menu.forEach(x -> menuList.add(x.getName()));
         AdminViewMenuList.getItems().addAll(menuList);
+    }
+
+    public void handleDeleteMenu(ActionEvent event) throws Exception {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Delete Menu");
+        alert.setContentText("The selected menu will be deleted");
+
+        try {
+
+            if (alert.showAndWait().get() == ButtonType.OK) {
+                String menuName = AdminViewMenuList.getSelectionModel().getSelectedItem();
+                _menuRepository.deleteMenuByName(menuName);
+
+                root = FXMLLoader.load(getClass().getResource("AdminViewMenu.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+
+        }catch (Exception ex){
+            alert.close();
+        }
     }
 }

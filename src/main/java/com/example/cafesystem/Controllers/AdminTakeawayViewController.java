@@ -4,14 +4,14 @@ import com.example.cafesystem.Repository.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -92,5 +92,27 @@ public class AdminTakeawayViewController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+    public void handleDeleteTakeaway(Event event) throws Exception{
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Delete Takeaway");
+        alert.setContentText("The selected Takeaway will be deleted");
+
+        try {
+
+            if (alert.showAndWait().get() == ButtonType.OK) {
+                TableSelectionModel<TakeawayVM> takeaway = adminTakeawayTable.getSelectionModel();
+                _takeawayRepository.deleteTakeawayByReferenceCode(takeaway.getSelectedItem().getReferenceCode());
+
+                root = FXMLLoader.load(getClass().getResource("AdminTakeawayView.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+
+        }catch (Exception ex){
+            alert.close();
+        }
     }
 }

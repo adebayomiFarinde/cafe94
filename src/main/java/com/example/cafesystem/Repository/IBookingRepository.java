@@ -14,4 +14,5 @@ public abstract class IBookingRepository {
     public abstract Booking getBookingId(UUID bookingId);
     public abstract List<Booking> getAllBookingByCustomerId(UUID customerID);
     public abstract List<Booking> getAllBookings();
+    public abstract void deleteBookingByReferenceCode(String referenceCode);
 }

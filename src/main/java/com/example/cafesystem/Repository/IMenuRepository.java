@@ -12,4 +12,5 @@ public abstract class IMenuRepository {
     public abstract Menu getMenuId(UUID menuId);
     public abstract List<Menu> getAllMenu();
     public abstract Menu getMenuByName(String menuName);
+    public abstract void deleteMenuByName(String menuName);
 }

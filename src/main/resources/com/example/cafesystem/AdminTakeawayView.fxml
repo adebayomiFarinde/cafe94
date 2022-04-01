@@ -17,5 +17,7 @@
       </Label>
       <TableView fx:id="adminTakeawayTable" layoutX="115.0" layoutY="135.0" prefHeight="150.0" prefWidth="370.0" ></TableView>
       <Button fx:id="AdminTakeawayBackButton" layoutX="186.0" layoutY="335.0" mnemonicParsing="false" onAction="#switchToAdminView" text="Back" />
+      <Button fx:id="AdminViewTakeawayRemove" layoutX="276.0" layoutY="335.0" mnemonicParsing="false" onAction="#handleDeleteTakeaway" text="Remove" />
+
    </children>
 </AnchorPane>

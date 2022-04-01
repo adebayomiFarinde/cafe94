@@ -16,6 +16,6 @@
       </Label>
       <ListView fx:id="AdminViewMenuList" layoutX="182.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
       <Button fx:id="AdminViewMenuBack" layoutX="182.0" layoutY="336.0" mnemonicParsing="false" onAction="#switchToAdminView" text="Back" />
-      <Button fx:id="AdminViewStaffRemove" layoutX="278" layoutY="336.0" mnemonicParsing="false" text="Remove" />
+      <Button fx:id="AdminViewStaffRemove" layoutX="278" layoutY="336.0" mnemonicParsing="false" onAction="#handleDeleteMenu" text="Remove" />
    </children>
 </AnchorPane>

@@ -15,10 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -33,12 +30,14 @@ public class AdminStaffController implements Initializable {
     private IUserService _userService;
     private IStaffRepository _staffRepository;
     private ICustomerRepository _customerRepository;
-    public AdminStaffController(){
+
+    public AdminStaffController() {
         _staffRepository = new StaffRepository();
         _customerRepository = new CustomerRepository();
         _userService = new UserService(_customerRepository, _staffRepository);
 
     }
+
     @FXML
     private Stage stage;
 
@@ -72,7 +71,8 @@ public class AdminStaffController implements Initializable {
 
         tableViewStaff.getColumns().addAll(firstName, lastName, email, isActive, isDeleted, createdDate);
 
-        ArrayList<StaffVM>  staffVMS = new ArrayList<>(){};
+        ArrayList<StaffVM> staffVMS = new ArrayList<>() {
+        };
 
         staff.forEach(x -> staffVMS
                 .add(new StaffVM(x.getfName(), x.getlName(), x.getEmail(), Boolean.toString(x.getActive()),
@@ -101,4 +101,29 @@ public class AdminStaffController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+
+    public void handleDeletePerson(ActionEvent event) throws Exception {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Remove a staff member");
+        alert.setContentText("The selected staff will be deleted");
+
+        try {
+
+            if (alert.showAndWait().get() == ButtonType.OK) {
+                TableSelectionModel<StaffVM> selectedIndex = tableViewStaff.getSelectionModel();
+                _staffRepository.deleteStaffByEmail(selectedIndex.getSelectedItem().getEmail());
+
+                root = FXMLLoader.load(getClass().getResource("AdminStaffView.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+
+        }catch (Exception ex){
+            alert.close();
+        }
+    }
+
 }
