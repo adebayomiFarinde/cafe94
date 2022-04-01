@@ -9,6 +9,7 @@ import com.example.cafesystem.ViewModels.Enum.Portfolio;
 import com.example.cafesystem.ViewModels.StaffViewModel;
 
 import java.time.LocalDate;
+import java.util.Locale;
 import java.util.UUID;
 
 public class UserService extends IUserService {
@@ -21,12 +22,12 @@ public class UserService extends IUserService {
     }
     @Override
     public boolean customerLogin(String email, String password) {
-        Customer customer = _customerRepository.getCustomerByEmailPassword(email, password);
+        Customer customer = _customerRepository.getCustomerByEmailPassword(email.toLowerCase(Locale.ROOT), password);
 
         if(customer == null){
             return false;
         }
-        else if(!customer.isDeleted() && customer.getActive()){
+        else if(!customer.getIsDeleted() && customer.getActive()){
             return true;
         }
         else{
@@ -36,13 +37,13 @@ public class UserService extends IUserService {
 
     @Override
     public boolean adminLogin(String email, String password) {
-        Staff staff = _staffRepository.getStaffByEmailPassword(email, password);
+        Staff staff = _staffRepository.getStaffByEmailPassword(email.toLowerCase(Locale.ROOT), password);
 
         if(staff == null){
             return false;
         }
 
-        else if(!staff.isDeleted() && staff.getActive()){
+        else if(!staff.getIsDeleted() && staff.getActive()){
             return true;
         }
         else{

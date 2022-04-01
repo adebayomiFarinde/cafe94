@@ -5,4 +5,5 @@ module com.example.cafesystem {
 
     opens com.example.cafesystem to javafx.fxml;
     exports com.example.cafesystem;
+
 }

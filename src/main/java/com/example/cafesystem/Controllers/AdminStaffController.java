@@ -6,6 +6,8 @@ import com.example.cafesystem.Repository.IStaffRepository;
 import com.example.cafesystem.Repository.StaffRepository;
 import com.example.cafesystem.Services.IUserService;
 import com.example.cafesystem.Services.UserService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,10 +17,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +47,9 @@ public class AdminStaffController implements Initializable {
     private Parent root;
 
     @FXML
+    private TableView tableViewStaff;
+
+    @FXML
     private Label AdminStaffViewLabel;
 
     @FXML
@@ -53,12 +60,38 @@ public class AdminStaffController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<Staff> staff = MockData.getStaff();
 
-        ArrayList<String> staffNames = new ArrayList<>();
-        staff.forEach(x -> staffNames.add(x.getfName() +  " " +  x.getlName()) );
+        List<Staff> staff = _staffRepository.getAllStaff();
 
-        AdminStaffViewList.getItems().addAll(staffNames);
+        TableColumn firstName = new TableColumn("First Name");
+        TableColumn lastName = new TableColumn("Last Name");
+        TableColumn email = new TableColumn("Email");
+        TableColumn isActive = new TableColumn("Is Active");
+        TableColumn isDeleted = new TableColumn("Is Deleted");
+        TableColumn createdDate = new TableColumn("Created Date");
+
+        tableViewStaff.getColumns().addAll(firstName, lastName, email, isActive, isDeleted, createdDate);
+
+        ArrayList<StaffVM>  staffVMS = new ArrayList<>(){};
+
+        staff.forEach(x -> staffVMS
+                .add(new StaffVM(x.getfName(), x.getlName(), x.getEmail(), Boolean.toString(x.getActive()),
+                        Boolean.toString(x.getIsDeleted()), x.getCreatedDate().toString())));
+
+        final ObservableList<StaffVM> all = FXCollections.observableArrayList(
+                staffVMS
+        );
+
+        firstName.setCellValueFactory(new PropertyValueFactory<StaffVM, String>("firstName"));
+        lastName.setCellValueFactory(new PropertyValueFactory<StaffVM, String>("lastName"));
+        email.setCellValueFactory(new PropertyValueFactory<StaffVM, String>("email"));
+        isActive.setCellValueFactory(new PropertyValueFactory<StaffVM, String>("isActive"));
+        isDeleted.setCellValueFactory(new PropertyValueFactory<StaffVM, String>("isDeleted"));
+        createdDate.setCellValueFactory(new PropertyValueFactory<StaffVM, String>("createdDate"));
+
+        tableViewStaff.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
+
+        tableViewStaff.setItems(all);
     }
 
     public void switchAdminView(ActionEvent event) throws IOException {

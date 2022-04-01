@@ -9,6 +9,7 @@ import com.example.cafesystem.ViewModels.UpdateCustomerViewModel;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -21,7 +22,7 @@ public class CustomerRepository extends ICustomerRepository{
         try{
             all.add(new Customer(newId, customer.getfName(), customer.getlName(),
                     customer.getPassword(), customer.getAddress(),
-                    customer.getEmail(), true, false, LocalDate.now(), UUID.randomUUID()));
+                    customer.getEmail().toLowerCase(Locale.ROOT), true, false, LocalDate.now(), UUID.randomUUID()));
 
             MockData.setCustomers(all);
 
@@ -54,7 +55,7 @@ public class CustomerRepository extends ICustomerRepository{
     public List<Customer> getAllCustomers() {
         ArrayList<Customer> all = MockData.getCustomers();
 
-        return all.stream().filter(x -> !x.isDeleted()).collect(Collectors.toList());
+        return all.stream().filter(x -> !x.getIsDeleted()).collect(Collectors.toList());
     }
 
     @Override

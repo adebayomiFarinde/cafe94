@@ -10,7 +10,9 @@ import com.example.cafesystem.ViewModels.UpdateStaffViewModel;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class StaffRepository extends IStaffRepository{
     @Override
@@ -20,7 +22,8 @@ public class StaffRepository extends IStaffRepository{
         try {
             UUID newId = UUID.randomUUID();
             all.add(new Staff(newId, staff.getfName(), staff.getlName(),
-                    staff.getPassword(), staff.getAddress(), staff.getPortfolio(), staff.getEmail(),
+                    staff.getPassword(), staff.getAddress(), staff.getPortfolio(),
+                    staff.getEmail().toLowerCase(Locale.ROOT),
                     true, false, LocalDate.now(), UUID.randomUUID()));
 
             MockData.setStaff(all);
@@ -39,7 +42,7 @@ public class StaffRepository extends IStaffRepository{
         int count =0;
 
         for(Staff staff : list){
-            if(staff.getActive() && !staff.isDeleted()){
+            if(staff.getActive() && !staff.getIsDeleted()){
                 count ++;
             }
         }
@@ -52,6 +55,13 @@ public class StaffRepository extends IStaffRepository{
         ArrayList<Staff> all = MockData.getStaff();
 
         return all.stream().filter(x -> x.getEmail().equals(email) && x.getPassword().equals(password)).findAny().orElse(null);
+    }
+
+    @Override
+    public List<Staff> getAllStaff() {
+        ArrayList<Staff> all = MockData.getStaff();
+
+        return all.stream().filter(x -> !x.getIsDeleted()).collect(Collectors.toList());
     }
 
     @Override

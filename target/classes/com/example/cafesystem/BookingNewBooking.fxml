@@ -8,20 +8,22 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.BookingNewBookingController">
+<?import javafx.scene.control.RadioButton?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: deepskyblue;" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.BookingNewBookingController">
    <children>
-      <Label fx:id="BookingNewLabel" layoutX="207.0" layoutY="49.0" text="Make New Booking">
+      <Label fx:id="BookingNewLabel" layoutX="256.0" style="-fx-font-weight: bold;" layoutY="49.0" text="New Booking">
          <font>
-            <Font size="16.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="BookingNewDayLabel" layoutX="143.0" layoutY="158.0" text="Choose day" />
-      <Label fx:id="BookingNewTimeLabel" layoutX="140.0" layoutY="207.0" text="Choose Time" />
+      <Label fx:id="BookingNewDayLabel" layoutX="140.0" layoutY="158.0" text="Choose Date" />
       <Label fx:id="BookingNewGuestsLabel" layoutX="140.0" layoutY="109.0" text="Number of Guests" />
-      <DatePicker fx:id="BookingNewTimePicker" layoutX="257.0" layoutY="203.0" />
-      <TextField fx:id="BookingNewGuestsText" layoutX="257.0" layoutY="114.0" />
-      <TextField fx:id="BookingNewDayText" layoutX="258.0" layoutY="154.0" />
-      <Button layoutX="180.0" layoutY="295.0" mnemonicParsing="false" onAction="#switchToBookingView" text="Back" />
-      <Button layoutX="306.0" layoutY="295.0" mnemonicParsing="false" onAction="#makeBooking" text="Submit" />
+      <Label fx:id="BookingNewActiveLabel" layoutX="140.0" layoutY="208.0" text="Active" />
+      <TextField fx:id="BookingNewGuestsText" layoutX="257.0" layoutY="105.0" />
+      <DatePicker fx:id="BookingNewTimePicker" layoutX="257.0" layoutY="154.0" />
+      <RadioButton fx:id="BookingNewActive" layoutX="257.0" layoutY="205.0" />
+
+      <Button layoutX="140.0" layoutY="295.0" mnemonicParsing="false" onAction="#switchToBookingView" text="Back" />
+      <Button layoutX="257.0" layoutY="295.0" mnemonicParsing="false" onAction="#makeBooking" text="Submit" />
    </children>
 </AnchorPane>

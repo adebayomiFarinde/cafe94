@@ -15,9 +15,13 @@ public class BookingRepository extends IBookingRepository{
     public UUID createBooking(CreateBooking booking) {
         ArrayList<Booking> all = MockData.getBookings();
         UUID newId = UUID.randomUUID();
-        all.add(new Booking(newId, booking.getBookingTime(),
+
+        UUID createdBy =  MockData.getCustomerId().equals(UUID.fromString("00000000-0000-0000-0000-000000000000")) ?
+                MockData.getStaffId(): MockData.getCustomerId();
+
+        all.add(new Booking(newId, booking.getReferenceCode(), booking.getBookingTime(),
                 booking.getCustomerID(), booking.getNumberOfGuest(), false,
-                true, LocalDate.now(), null));
+                booking.getActive(), LocalDate.now(), createdBy));
         MockData.setBookings(all);
 
         return newId;
@@ -27,7 +31,7 @@ public class BookingRepository extends IBookingRepository{
     public List<Booking> getAllBookings() {
         ArrayList<Booking> all = MockData.getBookings();
 
-        return all.stream().filter(x -> !x.isDeleted()).collect(Collectors.toList());
+        return all.stream().filter(x -> !x.getIsDeleted()).collect(Collectors.toList());
     }
 
     @Override

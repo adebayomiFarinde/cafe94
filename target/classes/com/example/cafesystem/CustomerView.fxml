@@ -18,7 +18,7 @@
             <Font size="15"></Font>
          </font>
       </Label>
-      <Button fx:id="logOutButton" layoutX="95" layoutY="250.0" mnemonicParsing="false" onAction="#logOut" text="LogOut" />
+      <Button fx:id="logOutButton" layoutX="95" layoutY="250.0" mnemonicParsing="false" onAction="#logOut" text="Logout" />
       <Button fx:id="BookingButton" layoutX="95.0" layoutY="164.0" mnemonicParsing="false" onAction="#switchToBookingView" text="Booking" />
       <Button fx:id="takeAwayButton" layoutX="255.0" layoutY="164.0" mnemonicParsing="false" onAction="#switchToTakeAway" text="Takeaway" />
       <Button fx:id="deliveryButton" layoutX="405.0" layoutY="164.0" mnemonicParsing="false" onAction="#switchToDelivery" text="Delivery" />

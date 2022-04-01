@@ -39,13 +39,11 @@ public class AdminViewController implements Initializable {
     @FXML
     Label AdminViewHelloLabel;
 
-
     private Stage stage;
 
     private Scene scene;
 
     private Parent root;
-
 
     @FXML
     private Label chooseReportLabel;
@@ -59,11 +57,9 @@ public class AdminViewController implements Initializable {
     @FXML
     private TextField AdminViewTextField;
 
-    String[] reports = {"Most Popular Item", "Most active customer", "Number of active staff"};
+    String[] reports = {"Most active customer", "Number of active staff"};
     String currentReport;
 
-
-    private String[] dummy = {"dog", "dog", "cat", "lion"};
 
     public void switchToWelcome(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("welcomeView.fxml"));
@@ -86,23 +82,18 @@ public class AdminViewController implements Initializable {
                 currentReport = reportsListView.getSelectionModel().getSelectedItem();
 
                 switch (currentReport) {
-                    case "Most Popular Item":
-
-                        AdminViewTextField.setText(dummy[1]);
-                        break;
                     case "Most active customer":
-                        AdminViewTextField.setText(dummy[2]);
-                    case "Number of active staff":
+                        AdminViewTextField.setText("Brad Pitt");
+                        break;
+                    default:
                         Integer result = _staffRepository.numberOfActiveStaff();
                         AdminViewTextField.setText(result.toString());
-
+                       break;
                 }
 
                 chosenReport.setText(currentReport);
             }
         });
-
-
     }
 
     public void switchToAddStaff(ActionEvent event) throws IOException {
@@ -112,44 +103,47 @@ public class AdminViewController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
 
     public void switchToViewStaff(ActionEvent event) throws IOException {
-
-
         root = FXMLLoader.load(getClass().getResource("AdminStaffView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
 
     public void switchToAddMenu(ActionEvent event) throws IOException {
-
-
         root = FXMLLoader.load(getClass().getResource("AdminAddMenu.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
 
     public void switchToViewMenu(ActionEvent event) throws IOException {
-
-
         root = FXMLLoader.load(getClass().getResource("AdminViewMenu.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
 
+    public void switchToBookings(ActionEvent event) throws IOException {
+
+        root = FXMLLoader.load(getClass().getResource("BookingViewBookings.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToTakeAway(ActionEvent event) throws IOException {
+
+        root = FXMLLoader.load(getClass().getResource("AdminTakeawayView.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: deepskyblue;" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.WelcomeController">
    <children>
-      <Label layoutX="120.0" layoutY="50.0" style="-fx-font-weight: bolder" text="Welcome to Cafe94">
+      <Label layoutX="120.0" layoutY="85.0" style="-fx-font-weight: bolder" text="Cafe94 Management">
          <font>
             <Font size="40.0" />
          </font>

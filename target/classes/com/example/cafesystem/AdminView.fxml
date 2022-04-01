@@ -7,46 +7,56 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" style="-fx-background-color: deepskyblue;" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.AdminViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: deepskyblue;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.AdminViewController">
     <children>
-        <Label fx:id="AdminViewHelloLabel" layoutX="400.0" style="-fx-font-weight: bold;" layoutY="26.0" text="Hello" >
+        <Label fx:id="AdminViewHelloLabel" layoutX="400.0" layoutY="26.0" style="-fx-font-weight: bold;" text="Hello">
             <font>
-                <Font size="15"></Font>
+                <Font size="15" />
             </font>
         </Label>
-        <Label layoutX="400.0" layoutY="55.0" style="-fx-font-weight: bold" text="Administrator" >
+        <Label layoutX="400.0" layoutY="55.0" style="-fx-font-weight: bold" text="Administrator">
             <font>
-                <Font size="15"></Font>
+                <Font size="15" />
             </font>
         </Label>
-      <Button fx:id="AdminViewBackToWelcomeButton" layoutX="352.0" layoutY="333.0" mnemonicParsing="false" onAction="#switchToWelcome" text="Logout" />
+      <Button fx:id="AdminViewBackToWelcomeButton" layoutX="474.0" layoutY="333.0" mnemonicParsing="false" onAction="#switchToWelcome" text="Logout" />
       <ListView fx:id="reportsListView" layoutX="19.0" layoutY="95.0" prefHeight="112.0" prefWidth="204.0" />
-      <Label fx:id="chooseReportLabel" layoutX="18.0" style="-fx-font-weight: bold" layoutY="75.0" text="Choose a report">
+      <Label fx:id="chooseReportLabel" layoutX="18.0" layoutY="75.0" style="-fx-font-weight: bold" text="Choose a report">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="chosenReport" layoutX="352.0" style="-fx-font-weight: bold;" layoutY="120.0">
+      <Label fx:id="chosenReport" layoutX="352.0" layoutY="120.0" style="-fx-font-weight: bold;">
           <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="staffManagementLabel" style="-fx-font-weight: bold;" layoutX="23.0" layoutY="225.0" text="Staff">
+      <Label fx:id="staffManagementLabel" layoutX="23.0" layoutY="225.0" style="-fx-font-weight: bold;" text="Staff">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
       <Button fx:id="AdminViewStaffAdd" layoutX="23.0" layoutY="257.0" mnemonicParsing="false" onAction="#switchToAddStaff" prefHeight="26.0" prefWidth="59.0" text="Add" />
-      <Button fx:id="AdminViewStaffRemove" layoutX="23.0" layoutY="294.0" mnemonicParsing="false" text="Remove" />
-      <Label fx:id="AdminViewOrdersLabel" layoutX="176.0" style="-fx-font-weight: bold;" layoutY="225.0" text="Menu">
+      <Label fx:id="AdminViewOrdersLabel" layoutX="136.0" layoutY="225.0" style="-fx-font-weight: bold;" text="Menu">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="AdminViewOrdersAdd" layoutX="175.0" layoutY="257.0" mnemonicParsing="false" onAction="#switchToAddMenu" prefHeight="26.0" prefWidth="59.0" text="Add" />
-      <Button fx:id="AdminViewOrdersRemove" layoutX="175.0" layoutY="294.0" mnemonicParsing="false" text="Remove" />
+      <Button fx:id="AdminViewOrdersAdd" layoutX="136.0" layoutY="257.0" mnemonicParsing="false" onAction="#switchToAddMenu" prefHeight="26.0" prefWidth="59.0" text="Add" />
       <TextField fx:id="AdminViewTextField" layoutX="352.0" layoutY="95.0" />
-      <Button fx:id="AdminViewStaffView" layoutX="21.0" layoutY="333.0" mnemonicParsing="false" onAction="#switchToViewStaff" prefHeight="26.0" prefWidth="59.0" text="View" />
-      <Button fx:id="AdminViewOrdersView" layoutX="173.0" layoutY="333.0" mnemonicParsing="false" onAction="#switchToViewMenu" prefHeight="26.0" prefWidth="59.0" text="View" />
+      <Button fx:id="AdminViewStaffView" layoutX="21.0" layoutY="294.0" mnemonicParsing="false" onAction="#switchToViewStaff" prefHeight="26.0" prefWidth="59.0" text="View" />
+      <Button fx:id="AdminViewOrdersView" layoutX="136.0" layoutY="294.0" mnemonicParsing="false" onAction="#switchToViewMenu" prefHeight="26.0" prefWidth="59.0" text="View" />
+      <Label layoutX="253.0" layoutY="223.0" text="Bookings">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="372.0" layoutY="225.0" text="Takeaways">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="AdminViewBookingsButton" layoutX="253.0" layoutY="257.0" mnemonicParsing="false" onAction="#switchToBookings" prefHeight="26.0" prefWidth="57.0" text="View" />
+      <Button fx:id="AdminViewTakeAwaysButton" layoutX="373.0" layoutY="257.0" mnemonicParsing="false" onAction="#switchToTakeAway" prefHeight="26.0" prefWidth="54.0" text="View" />
     </children>
 </AnchorPane>

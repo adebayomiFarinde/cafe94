@@ -1,5 +1,7 @@
 package com.example.cafesystem;
 
+import com.example.cafesystem.Repository.IMenuRepository;
+import com.example.cafesystem.Repository.MenuRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,10 +15,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdminViewMenuController implements Initializable {
 
+    private IMenuRepository _menuRepository;
+    public AdminViewMenuController(){
+        _menuRepository = new MenuRepository();
+    }
     @FXML
     private Stage stage;
 
@@ -38,14 +46,14 @@ public class AdminViewMenuController implements Initializable {
     @FXML
     private ListView<String> AdminViewMenuList;
 
-    String []  menu = {"Big Mac","Chicken Burger","Fillet","Apple"};
-
     String currentMenu;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        AdminViewMenuList.getItems().addAll(menu);
+        List<Menu> menu = _menuRepository.getAllMenu();
+        ArrayList<String> menuList = new ArrayList<>();
+        menu.forEach(x -> menuList.add(x.getName()));
+        AdminViewMenuList.getItems().addAll(menuList);
     }
 }

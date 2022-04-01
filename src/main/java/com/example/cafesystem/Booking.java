@@ -11,13 +11,23 @@ public class Booking extends BaseEntity
     private LocalDateTime bookingTime;
     private UUID customerID;
     private int numberOfGuest;
+    private String referenceCode;
 
-    public Booking(UUID bookingId, LocalDateTime bookingTime, UUID customerID, int numberOfGuest,
+    public String getReferenceCode() {
+        return referenceCode;
+    }
+
+    public void setReferenceCode(String referenceCode) {
+        this.referenceCode = referenceCode;
+    }
+
+    public Booking(UUID bookingId, String referenceCode, LocalDateTime bookingTime, UUID customerID, int numberOfGuest,
                    boolean isDeleted, boolean isActive, LocalDate createdDate, UUID createdBy) {
         super(bookingId, isDeleted, isActive, createdDate, createdBy);
         this.bookingTime = bookingTime;
         this.customerID = customerID;
         this.numberOfGuest = numberOfGuest;
+        this.referenceCode = referenceCode;
     }
 
     public LocalDateTime getBookingTime() {

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" style="-fx-background-color: deepskyblue;" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.AdminTakeawayViewController">
+   <children>
+      <Label fx:id="AdminTakeawayLabel" style="-fx-font-weight: bold;" layoutX="236.0" layoutY="44.0" text="Takeaway List">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TableView fx:id="adminTakeawayTable" layoutX="115.0" layoutY="135.0" prefHeight="150.0" prefWidth="370.0" ></TableView>
+      <Button fx:id="AdminTakeawayBackButton" layoutX="186.0" layoutY="335.0" mnemonicParsing="false" onAction="#switchToAdminView" text="Back" />
+   </children>
+</AnchorPane>

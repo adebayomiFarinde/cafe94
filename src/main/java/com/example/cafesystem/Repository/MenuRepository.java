@@ -35,7 +35,7 @@ public class MenuRepository extends IMenuRepository{
     @Override
     public List<Menu> getAllMenu() {
         List<Menu> list = MockData.getMenu().stream().filter(x -> x.getActive()
-                && !x.isDeleted()).collect(Collectors.toList());
+                && !x.getIsDeleted()).collect(Collectors.toList());
 
         list.sort(Comparator.comparing(Menu::getCreatedDate));
 

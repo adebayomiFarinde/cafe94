@@ -13,6 +13,7 @@ public class MockData {
     private static ArrayList<Customer> customers;
     private static ArrayList<Booking> bookings;
     private static ArrayList<Order> orders;
+    private static ArrayList<Takeaway> takeaways;
     private static String fName;
     private static String lName;
     private static String email;
@@ -77,6 +78,30 @@ public class MockData {
         MockData.email = email;
     }
 
+    public static void setMenu(ArrayList<Menu> menu) {
+        MockData.menu = menu;
+    }
+
+    public static void setStaff(ArrayList<Staff> staff) {
+        MockData.staff = staff;
+    }
+
+    public static void setCustomers(ArrayList<Customer> customers) {
+        MockData.customers = customers;
+    }
+
+    public static void setBookings(ArrayList<Booking> bookings) {
+        MockData.bookings = bookings;
+    }
+
+    public static void setOrders(ArrayList<Order> orders) {
+        MockData.orders = orders;
+    }
+
+    public static void setTakeaways(ArrayList<Takeaway> takeaways) {
+        MockData.takeaways = takeaways;
+    }
+
     public static ArrayList<Menu> getMenu() {
 
         if(menu == null){
@@ -99,24 +124,20 @@ public class MockData {
         return menu;
     }
 
-    public static void setMenu(ArrayList<Menu> menu) {
-        MockData.menu = menu;
-    }
+    public static ArrayList<Takeaway> getTakeaways() {
 
-    public static void setStaff(ArrayList<Staff> staff) {
-        MockData.staff = staff;
-    }
+        if(takeaways == null){
+            takeaways = new ArrayList<>();
 
-    public static void setCustomers(ArrayList<Customer> customers) {
-        MockData.customers = customers;
-    }
+            takeaways.add(new Takeaway(allUUID().get(0),  allUUID().get(5), "TW1237",true,
+                    false, LocalDate.now(), allUUID().get(6)));
+            takeaways.add(new Takeaway(allUUID().get(1), allUUID().get(3),"TW1547", true,
+                    false, LocalDate.now(), allUUID().get(4)));
+            takeaways.add(new Takeaway(allUUID().get(2), allUUID().get(6),"TW4671", true,
+                    false, LocalDate.now(), allUUID().get(3)));
+        }
 
-    public static void setBookings(ArrayList<Booking> bookings) {
-        MockData.bookings = bookings;
-    }
-
-    public static void setOrders(ArrayList<Order> orders) {
-        MockData.orders = orders;
+        return takeaways;
     }
 
     public static ArrayList<Staff> getStaff() {
@@ -160,15 +181,15 @@ public class MockData {
 
         if(bookings == null){
             bookings = new ArrayList<>();
-            bookings.add(new Booking(UUID.randomUUID(), LocalDateTime.now(), allUUID().get(3),
+            bookings.add(new Booking(UUID.randomUUID(), "TEST-23-12-4", LocalDateTime.now(), allUUID().get(3),
                             12, false, true,LocalDate.now(), allUUID().get(3)));
-            bookings.add(new Booking(UUID.randomUUID(), LocalDateTime.now().plusDays(20), allUUID().get(3),
+            bookings.add(new Booking(UUID.randomUUID(), "TEST-23-9-4", LocalDateTime.now().plusDays(20), allUUID().get(3),
                     12, false, true,LocalDate.now().plusYears(2), allUUID().get(3)));
-            bookings.add(new Booking(UUID.randomUUID(), LocalDateTime.now().plusYears(1), allUUID().get(3),
+            bookings.add(new Booking(UUID.randomUUID(), "TEST-10-12-4", LocalDateTime.now().plusYears(1), allUUID().get(3),
                     12, false, true,LocalDate.now(), allUUID().get(3)));
-            bookings.add(new Booking(UUID.randomUUID(), LocalDateTime.now().plusYears(1), allUUID().get(0),
+            bookings.add(new Booking(UUID.randomUUID(), "TEST-51-12-4", LocalDateTime.now().plusYears(1), allUUID().get(0),
                     12, false, true,LocalDate.now(), allUUID().get(3)));
-            bookings.add(new Booking(UUID.randomUUID(), LocalDateTime.now().plusYears(1), allUUID().get(1),
+            bookings.add(new Booking(UUID.randomUUID(), "TEST-37-10-1", LocalDateTime.now().plusYears(1), allUUID().get(1),
                     12, false, true,LocalDate.now(), allUUID().get(3)));
         }
 
