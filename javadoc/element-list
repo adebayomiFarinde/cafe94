@@ -1,0 +1,6 @@
+module:com.example.cafesystem
+com.example.cafesystem
+com.example.cafesystem.Repository
+com.example.cafesystem.Services
+com.example.cafesystem.ViewModels
+com.example.cafesystem.ViewModels.Enum
