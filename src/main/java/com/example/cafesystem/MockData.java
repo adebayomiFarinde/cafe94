@@ -7,6 +7,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * This class acts as a database of the application. (menu List, staff List, customers List, bookings List,
+ * orders List, takeaways List)
+ */
 public class MockData {
     private static ArrayList<Menu> menu;
     private static ArrayList<Staff> staff;
@@ -20,14 +24,26 @@ public class MockData {
     private static UUID customerId;
     private static UUID staffId;
 
+    /**
+     * Get the customer ID component.
+     * @return The customer ID.
+     */
     public static UUID getCustomerId() {
         return customerId;
     }
 
+    /**
+     * Set the customer ID component.
+     * @param customerId The new customer id.
+     */
     public static void setCustomerId(UUID customerId) {
         MockData.customerId = customerId;
     }
 
+    /**
+     * List of all the ID's.
+     * @return the list of all ID's.
+     */
     public static ArrayList<UUID> allUUID(){
 
         ArrayList guidList = new ArrayList<UUID>();
@@ -46,62 +62,122 @@ public class MockData {
         return guidList;
     }
 
+    /**
+     *Get whether staff id component.
+     * @return The staff id.
+     */
     public static UUID getStaffId() {
         return staffId;
     }
 
+    /**
+     * Set the staff id component.
+     * @param staffId The new staff id.
+     */
     public static void setStaffId(UUID staffId) {
         MockData.staffId = staffId;
     }
 
+    /**
+     *Get the first name component.
+     * @return The first name.
+     */
     public static String getfName() {
         return MockData.fName;
     }
 
+    /**
+     * Set first name component .
+     * @param fName The new first name.
+     */
     public static void setfName(String fName) {
         MockData.fName = fName;
     }
 
+    /**
+     * Get the last name component.
+     * @return The last name.
+     */
     public static String getlName() {
         return MockData.lName;
     }
 
+    /**
+     * Set the last name component.
+     * @param lName The new last name.
+     */
     public static void setlName(String lName) {
         MockData.lName = lName;
     }
 
+    /**
+     * Get the email component.
+     * @return The email address.
+     */
     public static String getEmail() {
         return MockData.email;
     }
 
+    /**
+     * Set the email component.
+     * @param email The new email.
+     */
     public static void setEmail(String email) {
         MockData.email = email;
     }
 
+    /**
+     * Set the Menu component.
+     * @param menu The new Menu.
+     */
     public static void setMenu(ArrayList<Menu> menu) {
         MockData.menu = menu;
     }
 
+    /**
+     * Set the staff component.
+     * @param staff The new staff.
+     */
     public static void setStaff(ArrayList<Staff> staff) {
         MockData.staff = staff;
     }
 
+    /**
+     * Set the Customers component.
+     * @param customers The new customers.
+     */
     public static void setCustomers(ArrayList<Customer> customers) {
         MockData.customers = customers;
     }
 
+    /**
+     * Set the bookings component.
+     * @param bookings The new bookings.
+     */
     public static void setBookings(ArrayList<Booking> bookings) {
         MockData.bookings = bookings;
     }
 
+    /**
+     * Set the orders component.
+     * @param orders The new orders.
+     */
     public static void setOrders(ArrayList<Order> orders) {
         MockData.orders = orders;
     }
 
+    /**
+     * Set the takeaway component.
+     * @param takeaways The new takeaway.
+     */
     public static void setTakeaways(ArrayList<Takeaway> takeaways) {
         MockData.takeaways = takeaways;
     }
 
+    /**
+     * Get the List with all current Menus.
+     * @return List of current Menus.
+     */
     public static ArrayList<Menu> getMenu() {
 
         if(menu == null){
@@ -124,6 +200,10 @@ public class MockData {
         return menu;
     }
 
+    /**
+     * Get the List with all current Takeaways.
+     * @return List with all current Takeaways.
+     */
     public static ArrayList<Takeaway> getTakeaways() {
 
         if(takeaways == null){
@@ -140,6 +220,10 @@ public class MockData {
         return takeaways;
     }
 
+    /**
+     * Get the List with all current staff members.
+     * @return List with all current staff members.
+     */
     public static ArrayList<Staff> getStaff() {
         if(staff == null){
 
@@ -158,6 +242,10 @@ public class MockData {
         return staff;
     }
 
+    /**
+     *  Get the List with all current customers.
+     * @return List with all current customers.
+     */
     public static ArrayList<Customer> getCustomers() {
 
         if(customers == null){
@@ -177,6 +265,10 @@ public class MockData {
         return customers;
     }
 
+    /**
+     * Get the List with all current bookings.
+     * @return List with all current bookings.
+     */
     public static ArrayList<Booking> getBookings() {
 
         if(bookings == null){
@@ -196,6 +288,10 @@ public class MockData {
         return bookings;
     }
 
+    /**
+     * Get the List with all current orders.
+     * @return List with all current orders.
+     */
     public static ArrayList<Order> getOrders() {
 
         if(orders == null){

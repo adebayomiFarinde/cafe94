@@ -9,7 +9,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * This class starts the application.
+ */
 public class HelloApplication extends Application {
+
+    /**The main entry point for all JavaFX applications.
+     * @param stage The stage.
+     * @throws IOException Throws an exception which has to be caught if it occurs.
+     */
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -33,6 +41,10 @@ public class HelloApplication extends Application {
 
     }
 
+    /**
+     * Main Method which launches the application.
+     * @param args Arguments passed by the command line.
+     */
     public static void main(String[] args) {
         launch();
     }

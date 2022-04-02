@@ -39,62 +39,62 @@ public class Booking extends BaseEntity
     }
 
     /**
-     *
-     * @return The reference Code
+     * Get the reference code component.
+     * @return The reference Code.
      */
     public String getReferenceCode() {
         return referenceCode;
     }
 
     /**
-     * Set the reference code
-     * @param referenceCode
+     * Set the reference code component.
+     * @param referenceCode The new reference code.
      */
     public void setReferenceCode(String referenceCode) {
         this.referenceCode = referenceCode;
     }
 
 
-    /**
-     * @return the Booking Time
+    /** Get the Booking time component.
+     * @return The Booking Time.
      */
     public LocalDateTime getBookingTime() {
         return bookingTime;
     }
 
     /**
-     * Set the booking Time
-     * @param bookingTime
+     * Get the Booking time component.
+     * @param bookingTime The new Booking Time.
      */
     public void setBookingTime(LocalDateTime bookingTime) {
         this.bookingTime = bookingTime;
     }
 
-    /**
-     * @return The Customer ID
+    /** Get the customer ID component.
+     * @return The Customer ID.
      */
     public UUID getCustomerID() {
         return customerID;
     }
 
     /**
-     * Set the Customer ID
-     * @param customerID
+     * Set the Customer ID  component.
+     * @param customerID The new Customer ID.
      */
     public void setCustomerID(UUID customerID) {
         this.customerID = customerID;
     }
 
-    /**
-     * @return The number of guests
+    /** Get the number of guests component.
+     * @return The number of guests.
      */
     public int getNumberOfGuest() {
         return numberOfGuest;
     }
 
     /**
-     * The number of guests
-     * @param numberOfGuest
+     * Set number of guests  component.
+     * @param numberOfGuest The number of guests.
      */
     public void setNumberOfGuest(int numberOfGuest) {
         this.numberOfGuest = numberOfGuest;

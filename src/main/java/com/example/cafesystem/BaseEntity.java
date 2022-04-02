@@ -17,16 +17,16 @@ public class BaseEntity {
     private LocalDate modifiedDate;
     private UUID modifiedBy;
 
-    /**
-     * @return whether it is active or not
+    /** Get whether it is active or not component.
+     * @return The isActive status.
      */
     public boolean getActive() {
         return isActive;
     }
 
     /**
-     * Set the activity level
-     * @param active
+     * Set the activity level.
+     * @param active The new activity Level.
      */
     public void setActive(boolean active) {
         isActive = active;
@@ -34,11 +34,11 @@ public class BaseEntity {
 
     /**
      * Create a BaseEntity with the following properties:
-     * @param id The id
-     * @param isDeleted  Whether it is deleted or not
-     * @param isActive Whether it is active or not
-     * @param createdDate The creation Date
-     * @param createdBy Who created the Booking
+     * @param id The id.
+     * @param isDeleted  Whether it is deleted or not.
+     * @param isActive Whether it is active or not.
+     * @param createdDate The creation Date.
+     * @param createdBy Who created the instance.
      */
     public BaseEntity(UUID id, boolean isDeleted,
                       boolean isActive, LocalDate createdDate, UUID createdBy){
@@ -50,91 +50,91 @@ public class BaseEntity {
         this.createdBy = createdBy;
     }
 
-    /**
-     * @return The id
+    /** Get the id component.
+     * @return The id.
      */
     public UUID getId() {
         return id;
     }
 
     /**
-     * Set the id
-     * @param id
+     * Set the id component.
+     * @param id The new Id.
      */
     public void setId(UUID id) {
         this.id = id;
     }
 
-    /**
-     * @return whether it is deleted or not
+    /** Get whether it is deleted or not component.
+     * @return The isDeleted status.
      */
     public boolean getIsDeleted() {
         return isDeleted;
     }
 
     /**
-     * Set whether it is deleted or not
-     * @param deleted
+     * Set whether it is deleted or not.
+     * @param deleted The new isDeleted status.
      */
     public void setIsDeleted(boolean deleted) {
         isDeleted = deleted;
     }
 
-    /**
-     * @return the created Date
+    /** Get the Creation Date component.
+     * @return The created Date.
      */
     public LocalDate getCreatedDate() {
         return createdDate;
     }
 
     /**
-     * Set the created Date
-     * @param createdDate
+     * Set the Creation Date component.
+     * @param createdDate The new creation Date.
      */
     public void setCreatedDate(LocalDate createdDate) {
         this.createdDate = createdDate;
     }
 
-    /**
-     * @return the creator
+    /** Get the creator component.
+     * @return The creator.
      */
     public UUID getCreatedBy() {
         return createdBy;
     }
 
     /**
-     * Set who was the creator
-     * @param createdBy
+     * Set who was the creator component.
+     * @param createdBy The entity who created this instance.
      */
     public void setCreatedBy(UUID createdBy) {
         this.createdBy = createdBy;
     }
 
-    /**
-     * @return the modified Date
+    /** Get the modified date component.
+     * @return The modified Date.
      */
     public LocalDate getModifiedDate() {
         return modifiedDate;
     }
 
     /**
-     * Set the modified Date
-     * @param modifiedDate
+     * Set the modified Date component.
+     * @param modifiedDate The new modified Date.
      */
     public void setModifiedDate(LocalDate modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 
-    /**
-     * @return who did the modifying
+    /** Get who modified the contents.
+     * @return Modified by who.
      */
     public UUID getModifiedBy() {
         return modifiedBy;
     }
 
     /**
-     * Set who did the modifying
-     * @param modifiedBy
+     * Set who did the modifying.
+     * @param modifiedBy The new modifiedBy.
      */
     public void setModifiedBy(UUID modifiedBy) {
         this.modifiedBy = modifiedBy;
