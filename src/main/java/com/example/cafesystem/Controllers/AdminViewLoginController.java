@@ -21,10 +21,17 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.UUID;
 
+/**
+ * This class provides functionality to the AdminLoginView.fxml.
+ */
 public class AdminViewLoginController {
     private IUserService _userService;
     private IStaffRepository _staffRepository;
     private ICustomerRepository _customerRepository;
+
+    /**
+     * Initializes the _staffRepository, _customerRepository and _userService.
+     */
     public AdminViewLoginController(){
         _staffRepository = new StaffRepository();
         _customerRepository = new CustomerRepository();
@@ -43,6 +50,10 @@ public class AdminViewLoginController {
 
     private Parent root;
 
+    /** Admin Log In verification.
+     * @param event  represents an action when Submit Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void login(ActionEvent event) throws IOException {
 
         String username = AdminLogInViewEmailTextField.getText();
@@ -79,7 +90,7 @@ public class AdminViewLoginController {
 
             try{
                 if (alert.showAndWait().get() == ButtonType.OK) {
-                    root = FXMLLoader.load(getClass().getResource("CustomerLoginView.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("AdminLoginView.fxml"));
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
                     stage.setScene(scene);
@@ -93,6 +104,10 @@ public class AdminViewLoginController {
     }
 
 
+    /** Switch to Welcome View.
+     * @param event represents an action when Back Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToWelcome(ActionEvent event) throws IOException {
 
 

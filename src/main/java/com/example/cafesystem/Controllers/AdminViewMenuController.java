@@ -18,9 +18,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * This class provides functionality to the AdminViewMenu.fxml.
+ */
+
 public class AdminViewMenuController implements Initializable {
 
     private IMenuRepository _menuRepository;
+
+    /**
+     * Menu Repository initialised.
+     */
     public AdminViewMenuController(){
         _menuRepository = new MenuRepository();
     }
@@ -31,6 +39,11 @@ public class AdminViewMenuController implements Initializable {
 
     private Parent root;
 
+
+    /** Switch to AdminView.fxml.
+     * @param event  represents an action when Back Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToAdminView(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("AdminView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -48,6 +61,10 @@ public class AdminViewMenuController implements Initializable {
     String currentMenu;
 
 
+    /** Set Table columns Name for Menu List. Fetch appropriate attributes in the Table.
+     * @param url FXMLLoader handles this automatically.
+     * @param resourceBundle FXMLLoader handles this automatically.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Menu> menu = _menuRepository.getAllMenu();
@@ -56,6 +73,10 @@ public class AdminViewMenuController implements Initializable {
         AdminViewMenuList.getItems().addAll(menuList);
     }
 
+    /** Removes a Menu.
+     * @param event  represents an action when Remove Button is clicked.
+     * @throws Exception There may occur an exception.
+     */
     public void handleDeleteMenu(ActionEvent event) throws Exception {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Delete Menu");

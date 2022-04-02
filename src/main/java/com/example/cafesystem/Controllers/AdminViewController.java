@@ -23,12 +23,18 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
+/**
+ * This class provides functionality to the AdminView.fxml.
+ */
 public class AdminViewController implements Initializable {
 
     private IUserService _userService;
     private IStaffRepository _staffRepository;
     private ICustomerRepository _customerRepository;
+
+    /**
+     * Initializes the _staffRepository, _customerRepository and _userService.
+     */
     public AdminViewController(){
         _staffRepository = new StaffRepository();
         _customerRepository = new CustomerRepository();
@@ -61,6 +67,10 @@ public class AdminViewController implements Initializable {
     String currentReport;
 
 
+    /** Switch to WelcomeView.fxml.
+     * @param event represents an action when LogOut Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToWelcome(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("welcomeView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -69,6 +79,10 @@ public class AdminViewController implements Initializable {
         stage.show();
     }
 
+    /** Set Table columns Name for Report List. Fetch appropriate attributes in the Table.
+     * @param url FXMLLoader handles this automatically.
+     * @param resourceBundle FXMLLoader handles this automatically.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AdminViewHelloLabel.setText("Hello " + MockData.getfName() + " "+ MockData.getlName() );
@@ -96,6 +110,10 @@ public class AdminViewController implements Initializable {
         });
     }
 
+    /** Switch to AdminAddStaffView.fxml.
+     * @param event represents an action when Staff  Add is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToAddStaff(ActionEvent event) throws IOException {
 
         root = FXMLLoader.load(getClass().getResource("AdminAddStaffView.fxml"));
@@ -105,6 +123,10 @@ public class AdminViewController implements Initializable {
         stage.show();
     }
 
+    /** Switch to AdminStaffView.fxml
+     * @param event represents an action when Staff - View Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToViewStaff(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("AdminStaffView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -113,6 +135,10 @@ public class AdminViewController implements Initializable {
         stage.show();
     }
 
+    /** Switch to AdminAddMenu.fxml.
+     * @param event represents an action when Menu - Add Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToAddMenu(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("AdminAddMenu.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -121,6 +147,10 @@ public class AdminViewController implements Initializable {
         stage.show();
     }
 
+    /** Switch to AdminViewMenu.fxml.
+     * @param event represents an action when Meny - View Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToViewMenu(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("AdminViewMenu.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -129,6 +159,10 @@ public class AdminViewController implements Initializable {
         stage.show();
     }
 
+    /** Switch to BookingViewBookings.fxml.
+     * @param event represents an action when Bookings - View Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToBookings(ActionEvent event) throws IOException {
 
         root = FXMLLoader.load(getClass().getResource("BookingViewBookings.fxml"));
@@ -138,6 +172,10 @@ public class AdminViewController implements Initializable {
         stage.show();
     }
 
+    /** Switch to AdminTakeawayView.fxml.
+     * @param event represents an action when Takeaways - View Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToTakeAway(ActionEvent event) throws IOException {
 
         root = FXMLLoader.load(getClass().getResource("AdminTakeawayView.fxml"));

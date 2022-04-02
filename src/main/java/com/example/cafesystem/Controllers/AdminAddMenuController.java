@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.UUID;
 
+/**
+ * This class provides functionality to the AdminAddMenuView.fxml
+ */
 public class AdminAddMenuController {
     private IUserService _userService;
     private IStaffRepository _staffRepository;
@@ -44,6 +47,11 @@ public class AdminAddMenuController {
     @FXML
     private TextField AdminAddMenuNameText;
 
+
+    /** Switch to the AdminView.fxml
+     * @param event represents an action when Back Button clicked
+     * @throws IOException Input Output Exception
+     */
     public void switchToAdminView(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("AdminView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -52,6 +60,10 @@ public class AdminAddMenuController {
         stage.show();
     }
 
+    /** Adds A new Menu.
+     * @param event represents an action when Add Button clicked
+     * @throws IOException Input Output Exception
+     */
     public void addMenu(ActionEvent event) throws IOException {
         String name = AdminAddMenuNameText.getText();
         String description = AdminAddMenuDescriptionText.getText();

@@ -24,11 +24,18 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.UUID;
 
+/**
+ * This class provides functionality to the AdminAddStaffView.fxml
+ */
 public class AdminAddStaffController {
 
     private IUserService _userService;
     private IStaffRepository _staffRepository;
     private ICustomerRepository _customerRepository;
+
+    /**
+     * Initializes the _staffRepository, _customerRepository and _userService.
+     */
     public AdminAddStaffController(){
         _staffRepository = new StaffRepository();
         _customerRepository = new CustomerRepository();
@@ -55,6 +62,11 @@ public class AdminAddStaffController {
 
     private Parent root;
 
+    /**
+     * Switch to AdminView.fxml.
+     * @param event  Represents an action when Back Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToWelcome(ActionEvent event) throws IOException {
 
         root = FXMLLoader.load(getClass().getResource("AdminView.fxml"));
@@ -66,7 +78,11 @@ public class AdminAddStaffController {
 
     }
 
-
+    /**
+     * Add a staff member.
+     * @param event Represents an action when Submit Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void register(ActionEvent event) throws IOException {
 
         String email = AdminAddStaffEmailText.getText();

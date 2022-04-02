@@ -25,12 +25,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * This class provides functionality to the AdminStaffView.fxml.
+ */
 public class AdminStaffController implements Initializable {
 
     private IUserService _userService;
     private IStaffRepository _staffRepository;
     private ICustomerRepository _customerRepository;
 
+    /**
+     * Initializes the _staffRepository, _customerRepository and _userService.
+     */
     public AdminStaffController() {
         _staffRepository = new StaffRepository();
         _customerRepository = new CustomerRepository();
@@ -57,6 +63,11 @@ public class AdminStaffController implements Initializable {
     String currentStaff;
 
 
+    /**
+     * Set Table columns Name for Staff List. Fetch appropriate attributes in the Table.
+     * @param url FXMLLoader handles this automatically.
+     * @param resourceBundle FXMLLoader handles this automatically.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -94,6 +105,11 @@ public class AdminStaffController implements Initializable {
         tableViewStaff.setItems(all);
     }
 
+    /**
+     * Switch to AdminView.fxml.
+     * @param event  represents an action when Back Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchAdminView(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("AdminView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -103,6 +119,10 @@ public class AdminStaffController implements Initializable {
     }
 
 
+    /** Removes a staff member.
+     * @param event  represents an action when Remove Button is clicked.
+     * @throws Exception There may occur an exception.
+     */
     public void handleDeletePerson(ActionEvent event) throws Exception {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Remove a staff member");

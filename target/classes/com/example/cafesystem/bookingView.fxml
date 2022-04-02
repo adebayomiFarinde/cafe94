@@ -5,22 +5,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" style="-fx-background-color: deepskyblue;" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.BookingControllerView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: deepskyblue;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cafesystem.BookingControllerView">
    <children>
-      <Label layoutX="212.0" layoutY="90.0" style="-fx-font-weight: bold" text="Bookings" >
+      <Label layoutX="212.0" layoutY="90.0" style="-fx-font-weight: bold" text="Bookings">
          <font>
-            <Font size="25"></Font>
+            <Font size="25" />
          </font>
       </Label>
-      <Label fx:id="bookingViewHelloLabel" layoutX="400.0" style="-fx-font-weight: bold" layoutY="26.0" text="Hello" >
+      <Label fx:id="bookingViewHelloLabel" layoutX="400.0" layoutY="26.0" style="-fx-font-weight: bold" text="Hello">
          <font>
-            <Font size="15"></Font>
+            <Font size="15" />
          </font>
       </Label>
 
       <Button fx:id="backButton" layoutX="95.0" layoutY="250" mnemonicParsing="false" onAction="#switchToCustomerView" text="Back" />
       <Button layoutX="95.0" layoutY="164.0" mnemonicParsing="false" onAction="#switchToBookingView" text="View your bookings" />
       <Button layoutX="255.0" layoutY="164.0" mnemonicParsing="false" onAction="#switchToNewBooking" prefHeight="26.0" prefWidth="121.0" text="New booking" />
-      <Button layoutX="405.0" layoutY="164.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="Cancel a booking" />
    </children>
 </AnchorPane>
