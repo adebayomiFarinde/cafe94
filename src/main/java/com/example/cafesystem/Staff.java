@@ -5,6 +5,8 @@ import com.example.cafesystem.ViewModels.Enum.Portfolio;
 import java.time.LocalDate;
 import java.util.UUID;
 
+
+
 //Staff
 //will be able to manage the process involved in delivering food
 public class Staff extends  Person {
@@ -18,6 +20,7 @@ public class Staff extends  Person {
     public void setPortfolio(Portfolio portfolio) {
         this.portfolio = portfolio;
     }
+
 
     public Staff(UUID id, String fName, String lName, String password,
                  String address, Portfolio portfolio, String email,

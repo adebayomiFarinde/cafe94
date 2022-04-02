@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * This class represents a Customer. (customerId,fName,lName,password,address,email,isActive,isDeleted,
+ * createdDate,createdBy)
+ */
 //customers can use the system
 //to make bookings and view information about the menus etc.
 public class Customer extends  Person {
