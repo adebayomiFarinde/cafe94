@@ -25,10 +25,17 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
+/**
+ * This class provides functionality to the deliveryView.fxml.
+ */
+
 public class DeliveryController implements Initializable {
     private IMenuRepository _menuRepository;
     private IOrderRepository _orderRepository;
 
+    /**
+     *  Initializes the _menuRepository, and _orderRepository.
+     */
     public DeliveryController(){
         _menuRepository = new MenuRepository();
         _orderRepository = new OrderRepository();
@@ -51,6 +58,10 @@ public class DeliveryController implements Initializable {
 
     private Parent root;
 
+    /** Switch to CustomerView.fxml.
+     * @param event represents an action when Back Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToCustomerView(ActionEvent event) throws IOException {
 
         root = FXMLLoader.load(getClass().getResource("CustomerView.fxml"));
@@ -60,15 +71,13 @@ public class DeliveryController implements Initializable {
         stage.show();
     }
 
-    public void switchToWelcome(ActionEvent event) throws IOException {
 
-        root = FXMLLoader.load(getClass().getResource("welcomeView.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 
+
+    /** Customer makes an Order.
+     * @param event represents an action when Make Order Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void makeOrderDelivery(ActionEvent event) throws IOException {
         String textString = showOrderLabelDelivery.getText();
         if(!textString.equals("")) {
@@ -97,6 +106,10 @@ public class DeliveryController implements Initializable {
         }
     }
 
+    /** Set Table columns Name for Select Food List. Fetch appropriate attributes in the Table.
+     * @param url FXMLLoader handles this automatically.
+     * @param resourceBundle FXMLLoader handles this automatically.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Menu> list = _menuRepository.getAllMenu();

@@ -24,11 +24,17 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
+/**
+ * This class provides functionality to the orderView.fxml.
+ */
 public class OrderController  implements Initializable {
     private IMenuRepository _menuRepository;
     private IOrderRepository _orderRepository;
     private ITakeawayRepository _takeawayRepository;
 
+    /**
+     * Initializes the _menuRepository, _orderRepository and _takeawayRepository.
+     */
     public OrderController(){
         _menuRepository = new MenuRepository();
         _orderRepository = new OrderRepository();
@@ -55,6 +61,10 @@ public class OrderController  implements Initializable {
     private Parent root;
 
 
+    /** Set Table columns Name for Select Food(Takeaway) List. Fetch appropriate attributes in the Table.
+     * @param url FXMLLoader handles this automatically.
+     * @param resourceBundle FXMLLoader handles this automatically.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Menu> list = _menuRepository.getAllMenu();
@@ -73,6 +83,10 @@ public class OrderController  implements Initializable {
         });
     }
 
+    /** Switch to CustomerView.fxml.
+     * @param event represents an action when Back Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToCustomerView (ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("CustomerView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -81,14 +95,10 @@ public class OrderController  implements Initializable {
         stage.show();
     }
 
-    public void switchToWelcome (ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("welcomeView.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
+    /** Customer makes a Delivery Order.
+     * @param event  represents an action when Book Takeaway Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void makeOrder(ActionEvent event) throws IOException {
         String textString = showOrderLabel.getText();
         if(!textString.equals("")) {

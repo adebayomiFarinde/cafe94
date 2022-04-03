@@ -22,10 +22,18 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.UUID;
 
+/**
+ * This class provides functionality to the registerView.fxml.
+ */
+
 public class RegisterViewController {
     private IUserService _userService;
     private IStaffRepository _staffRepository;
     private ICustomerRepository _customerRepository;
+
+    /**
+     * Initializes the _staffRepository, _customerRepository and _userService.
+     */
     public RegisterViewController(){
         _staffRepository = new StaffRepository();
         _customerRepository = new CustomerRepository();
@@ -51,6 +59,10 @@ public class RegisterViewController {
     private TextField RegisterViewPasswordText;
 
 
+    /** Customer registration.
+     * @param event represents an action when Submit Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void register(ActionEvent event) throws IOException {
 
         String email = RegisterViewEmailText.getText();
@@ -86,6 +98,10 @@ public class RegisterViewController {
     }
 
 
+    /** Switch to WelcomeView.fxml.
+     * @param event represents an action when Back Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToWelcome(ActionEvent event) throws IOException {
 
 

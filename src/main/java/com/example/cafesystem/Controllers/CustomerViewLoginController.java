@@ -20,10 +20,17 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.UUID;
 
+/**
+ * This class provides functionality to the CustomerLoginView.fxml.
+ */
 public class CustomerViewLoginController {
         private IUserService _userService;
         private IStaffRepository _staffRepository;
         private ICustomerRepository _customerRepository;
+
+    /**
+     * Initializes the _staffRepository, _customerRepository and _userService.
+     */
         public CustomerViewLoginController(){
             _staffRepository = new StaffRepository();
             _customerRepository = new CustomerRepository();
@@ -42,6 +49,10 @@ public class CustomerViewLoginController {
 
     private Parent root;
 
+    /**Customer login verification.
+     * @param event event represents an action when Submit Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void login(ActionEvent event) throws IOException {
 
         String username = CustomerLoginVIewEmailText.getText();
@@ -91,6 +102,10 @@ public class CustomerViewLoginController {
         }
     }
 
+    /** Switch to WelcomeView.fxml.
+     * @param event represents an action when Back Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToWelcome(ActionEvent event) throws IOException {
 
 

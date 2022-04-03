@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * This class provides functionality to the CustomerView.fxml.
+ */
 public class CustomerViewController  implements Initializable {
 
     @FXML
@@ -27,12 +30,20 @@ public class CustomerViewController  implements Initializable {
 
     private Parent root;
 
+    /** Change Customer display Label to "Hello " + customerName.
+     * @param url FXMLLoader handles this automatically.
+     * @param resourceBundle FXMLLoader handles this automatically.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         CustomerViewHelloLabel.setText("Hello " + MockData.getfName() + " "+ MockData.getlName() );
     }
 
 
+    /** Customer logs out, switch back to welcomeView.fxml.
+     * @param event represents an action when Logout Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void logOut(ActionEvent event) throws IOException {
 
 
@@ -45,6 +56,10 @@ public class CustomerViewController  implements Initializable {
 
     }
 
+    /** Switch to bookingView.fxml.
+     * @param event represents an action when Booking Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToBookingView (ActionEvent event) throws IOException {
 
         root = FXMLLoader.load(getClass().getResource("bookingView.fxml"));
@@ -56,6 +71,10 @@ public class CustomerViewController  implements Initializable {
     }
 
 
+    /** Switch to orderView.fxml.
+     * @param event represents an action when Takeaway Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToTakeAway (ActionEvent event) throws IOException {
 
         root = FXMLLoader.load(getClass().getResource("orderView.fxml"));
@@ -66,6 +85,10 @@ public class CustomerViewController  implements Initializable {
 
     }
 
+    /** Switch to deliveryView.fxml.
+     * @param event  represents an action when Delivery Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToDelivery (ActionEvent event) throws IOException {
 
         root = FXMLLoader.load(getClass().getResource("deliveryView.fxml"));
