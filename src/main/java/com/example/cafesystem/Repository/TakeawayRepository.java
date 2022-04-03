@@ -10,7 +10,17 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+/**
+ *  This class is a repository class that implements all the abstract methods in the ITakeawayRepository class.
+ */
+
 public class TakeawayRepository extends ITakeawayRepository{
+
+    /**
+     * Create a new Takeaway Order, add it to the repository.
+     * @param takewayViewModel The Takeaway to be added.
+     * @return id of the new Takeaway.
+     */
     @Override
     public UUID createTakeaway(TakewayViewModel takewayViewModel) {
         ArrayList<Takeaway> all = MockData.getTakeaways();
@@ -27,6 +37,11 @@ public class TakeawayRepository extends ITakeawayRepository{
         return newId;
     }
 
+    /**
+     * Update a Takeaway Order.
+     * @param takeawayId The TakeawayId of the Takeaway to be updated.
+     * @param updateTakeaway The Takeaway object.
+     */
     @Override
     public void updateTakeaway(UUID takeawayId, Takeaway updateTakeaway) {
         ArrayList<Takeaway> all = MockData.getTakeaways();
@@ -44,6 +59,10 @@ public class TakeawayRepository extends ITakeawayRepository{
         MockData.setTakeaways(all);
     }
 
+    /**
+     * Delete a takeaway by passing its takeawayID.
+     * @param takeawayId  takeawayId used to delete a takeaway.
+     */
     @Override
     public void deleteTakeaway(UUID takeawayId) {
         ArrayList<Takeaway> all = MockData.getTakeaways();
@@ -52,6 +71,11 @@ public class TakeawayRepository extends ITakeawayRepository{
         MockData.setTakeaways(all);
     }
 
+    /**
+     * Get takeaway based on the takeaway's ID.
+     * @param takeawakeId The takeawayId used to identify each takeaway.
+     * @return  Takeaway corresponding to the takeawayId.
+     */
     @Override
     public Takeaway getTakeawayById(UUID takeawakeId) {
         ArrayList<Takeaway> all = MockData.getTakeaways();
@@ -60,6 +84,11 @@ public class TakeawayRepository extends ITakeawayRepository{
                 .findAny().orElse(null);
     }
 
+    /**
+     * Get all takeaway orders based on the reference Date.
+     * @param referencedDate The reference date used to identify each takeaway order.
+     * @return The list of all takeaway orders made on the specific date.
+     */
     @Override
     public List<Takeaway> getAllTakeawaysByDate(LocalDate referencedDate) {
         ArrayList<Takeaway> all = MockData.getTakeaways();
@@ -69,6 +98,11 @@ public class TakeawayRepository extends ITakeawayRepository{
 
     }
 
+    /**
+     * Get all takeaway orders based on the customerId.
+     * @param customerID The customerID used to identify each takeaway order.
+     * @return The list of all takeaway orders corresponding to the customerID.
+     */
     @Override
     public List<Takeaway> getAllTakeawayByCustomerId(UUID customerID) {
         ArrayList<Takeaway> all = MockData.getTakeaways();
@@ -77,6 +111,10 @@ public class TakeawayRepository extends ITakeawayRepository{
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Mark a takeaway as completed.
+     * @param takeawayId The takeawayId component.
+     */
     @Override
     public void markOrderAsCompleted(UUID takeawayId) {
         ArrayList<Takeaway> all = MockData.getTakeaways();
@@ -91,6 +129,10 @@ public class TakeawayRepository extends ITakeawayRepository{
         MockData.setTakeaways(all);
     }
 
+    /**
+     * Get list of all takeaways.
+     * @return The list containing all takeaways.
+     */
     @Override
     public List<Takeaway> getAllTakeaway() {
         List<Takeaway> all = MockData.getTakeaways();
@@ -98,6 +140,10 @@ public class TakeawayRepository extends ITakeawayRepository{
         return all.stream().filter(x -> !x.getIsDeleted()).collect(Collectors.toList());
     }
 
+    /**
+     * Delete a takeaway by passing its reference code.
+     * @param referenceCode Code used to delete a takeaway.
+     */
     @Override
     public void deleteTakeawayByReferenceCode(String referenceCode) {
         ArrayList<Takeaway> all = MockData.getTakeaways();

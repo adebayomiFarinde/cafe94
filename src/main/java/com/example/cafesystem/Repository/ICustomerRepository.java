@@ -7,6 +7,9 @@ import com.example.cafesystem.ViewModels.UpdateCustomerViewModel;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * This is an abstract class which provides methods for the CustomerRepository class.
+ */
 public abstract class ICustomerRepository {
 
 

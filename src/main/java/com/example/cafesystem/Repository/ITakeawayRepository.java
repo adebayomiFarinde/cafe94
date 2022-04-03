@@ -10,6 +10,10 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * This is an abstract class which provides methods for the TakeawayRepository class.
+ */
+
 public abstract class ITakeawayRepository {
     public abstract UUID createTakeaway(TakewayViewModel takeaway);
     public abstract void updateTakeaway(UUID takeawayId, Takeaway takeawayOrder);

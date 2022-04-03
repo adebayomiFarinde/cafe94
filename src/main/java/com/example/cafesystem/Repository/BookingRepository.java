@@ -10,7 +10,15 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+/**
+ *  This class is a repository class that implements all the abstract methods in the IBookingRepository class.
+ */
 public class BookingRepository extends IBookingRepository{
+
+    /** Create a new booking, add it to the repository.
+     * @param booking The booking to be added.
+     * @return id of the new Booking.
+     */
     @Override
     public UUID createBooking(CreateBooking booking) {
         ArrayList<Booking> all = MockData.getBookings();
@@ -27,6 +35,9 @@ public class BookingRepository extends IBookingRepository{
         return newId;
     }
 
+    /** Get list of all bookings.
+     * @return The list containing all bookings.
+     */
     @Override
     public List<Booking> getAllBookings() {
         ArrayList<Booking> all = MockData.getBookings();
@@ -34,6 +45,9 @@ public class BookingRepository extends IBookingRepository{
         return all.stream().filter(x -> !x.getIsDeleted()).collect(Collectors.toList());
     }
 
+    /** Delete a booking by passing its reference code.
+     * @param referenceCode Code used to delete booking.
+     */
     @Override
     public void deleteBookingByReferenceCode(String referenceCode) {
         ArrayList<Booking> all = MockData.getBookings();
@@ -42,6 +56,10 @@ public class BookingRepository extends IBookingRepository{
         MockData.setBookings(all);
     }
 
+    /** Get all bookings based on the customers ID.
+     * @param customerID The customer ID used to identify each customer.
+     * @return The list of all Bookings.
+     */
     @Override
     public List<Booking> getAllBookingByCustomerId(UUID customerID) {
         ArrayList<Booking> all = MockData.getBookings();
@@ -54,6 +72,10 @@ public class BookingRepository extends IBookingRepository{
         return list;
     }
 
+    /** Update a Booking.
+     * @param bookingId The bookingID of the Booking to be updated.
+     * @param updateCreateBooking The booking object.
+     */
     @Override
     public void updateBooking(UUID bookingId, UpdateCreateBooking updateCreateBooking) {
         ArrayList<Booking> all = MockData.getBookings();
@@ -72,6 +94,9 @@ public class BookingRepository extends IBookingRepository{
         return;
     }
 
+    /** Delete a Booking.
+     * @param bookingId Booking Id used to delete corresponding Booking.
+     */
     @Override
     public void deleteBooking(UUID bookingId) {
         ArrayList<Booking> all = MockData.getBookings();
@@ -80,6 +105,10 @@ public class BookingRepository extends IBookingRepository{
         MockData.setBookings(all);
     }
 
+    /** Get a Booking based on Id component.
+     * @param bookingId The booking Id component.
+     * @return The bookings corresponding to bookingID param passed.
+     */
     @Override
     public Booking getBookingId(UUID bookingId) {
         ArrayList<Booking> all = MockData.getBookings();

@@ -19,11 +19,19 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.UUID;
 
+/**
+ * This class provides functionality to the BookingNewBooking.fxml.
+ */
+
 public class BookingNewBookingController {
     private IUserService _userService;
     private IStaffRepository _staffRepository;
     private ICustomerRepository _customerRepository;
     private IBookingRepository _bookingRepository;
+
+    /**
+     *  Initializes the _staffRepository, _customerRepository, _userService and  _bookingRepository.
+     */
     public BookingNewBookingController(){
         _staffRepository = new StaffRepository();
         _customerRepository = new CustomerRepository();
@@ -47,6 +55,10 @@ public class BookingNewBookingController {
     @FXML
     private RadioButton BookingNewActive;
 
+    /** Switch back to bookingView.fxml.
+     * @param event represents an action when Back Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToBookingView(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("bookingView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -55,6 +67,10 @@ public class BookingNewBookingController {
         stage.show();
     }
 
+    /** Make a new booking.
+     * @param event represents an action when Submit Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void makeBooking(ActionEvent event) throws IOException {
 
         if(!BookingNewGuestsText.getText().equals("")){

@@ -7,7 +7,9 @@ import com.example.cafesystem.ViewModels.UpdateCreateBooking;
 import java.util.List;
 import java.util.UUID;
 
-
+/**
+ * This is an abstract class which provides methods for the BookingRepository class.
+ */
 public abstract class IBookingRepository {
 
     public abstract UUID createBooking(CreateBooking booking);

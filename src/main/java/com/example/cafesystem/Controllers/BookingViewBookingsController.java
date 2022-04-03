@@ -24,10 +24,17 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
+/**
+ * This class provides functionality to the bookingView.fxml.
+ */
 public class BookingViewBookingsController implements Initializable {
 
     private IBookingRepository _bookingRepository;
     private ICustomerRepository _customerRepository;
+
+    /**
+     *  Initializes the _bookingRepository, and _customerRepository.
+     */
     public BookingViewBookingsController(){
 
         _bookingRepository = new BookingRepository();
@@ -51,6 +58,10 @@ public class BookingViewBookingsController implements Initializable {
 
     String currentStaff;
 
+    /** Display customer full name.
+     * @param url FXMLLoader handles this automatically.
+     * @param resourceBundle FXMLLoader handles this automatically.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         bookingsViewHelloLabel.setText("Hello " + MockData.getfName() + " "+ MockData.getlName() );
@@ -98,6 +109,10 @@ public class BookingViewBookingsController implements Initializable {
         tableView.setItems(all);
     }
 
+    /** Switch to bookings view, different display based on whether you are an admin or customer.
+     * @param event represents an action when View Your Bookings Button is clicked.
+     * @throws IOException There may occur an exception.
+     */
     public void switchToBookingView(ActionEvent event) throws IOException {
 
         if(MockData.getStaffId().equals(UUID.fromString("00000000-0000-0000-0000-000000000000"))){
@@ -114,10 +129,14 @@ public class BookingViewBookingsController implements Initializable {
     }
 
 
+    /** Remove a booking.
+     * @param event  represents an action when Remove Button is clicked.
+     * @throws Exception There may occur an exception.
+     */
     public void handleDeleteBooking(ActionEvent event) throws Exception {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Delete Menu");
-        alert.setContentText("The selected menu will be deleted");
+        alert.setContentText("The selected booking will be deleted");
 
         try {
 

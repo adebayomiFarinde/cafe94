@@ -8,6 +8,9 @@ import com.example.cafesystem.ViewModels.UpdateStaffViewModel;
 
 import java.util.List;
 import java.util.UUID;
+/**
+ * This is an abstract class which provides methods for the StaffRepository class.
+ */
 
 public abstract class IStaffRepository {
     public abstract UUID createStaff(StaffViewModel staff);

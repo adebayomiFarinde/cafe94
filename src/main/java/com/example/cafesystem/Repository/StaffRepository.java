@@ -14,7 +14,17 @@ import java.util.Locale;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+/**
+ *  This class is a repository class that implements all the abstract methods in the IStaffRepository class.
+ */
+
 public class StaffRepository extends IStaffRepository{
+
+    /**
+     * Create a new staff, add it to the repository.
+     * @param staff  The staff to be added.
+     * @return id of the new Staff.
+     */
     @Override
     public UUID createStaff(StaffViewModel staff) {
         ArrayList<Staff> all = MockData.getStaff();
@@ -36,6 +46,10 @@ public class StaffRepository extends IStaffRepository{
 
     }
 
+    /**
+     * Get the number of active staff members.
+     * @return The number of active staff members.
+     */
     @Override
     public int numberOfActiveStaff() {
         List<Staff> list = MockData.getStaff();
@@ -50,6 +64,12 @@ public class StaffRepository extends IStaffRepository{
         return count;
     }
 
+    /**
+     * Get staff based on staff's email and password.
+     * @param email The email used to identify each staff.
+     * @param password The password used to identify each staff.
+     * @return Staff with the corresponding email and password.
+     */
     @Override
     public Staff getStaffByEmailPassword(String email, String password) {
         ArrayList<Staff> all = MockData.getStaff();
@@ -57,6 +77,10 @@ public class StaffRepository extends IStaffRepository{
         return all.stream().filter(x -> x.getEmail().equals(email) && x.getPassword().equals(password)).findAny().orElse(null);
     }
 
+    /**
+     * Get list of all staff.
+     * @return The list containing all staff.
+     */
     @Override
     public List<Staff> getAllStaff() {
         ArrayList<Staff> all = MockData.getStaff();
@@ -64,6 +88,11 @@ public class StaffRepository extends IStaffRepository{
         return all.stream().filter(x -> !x.getIsDeleted()).collect(Collectors.toList());
     }
 
+    /**
+     * Update a Staff member.
+     * @param staffId The staffID of the Staff member to be updated.
+     * @param staffVM The Staff object.
+     */
     @Override
     public void updateStaff(UUID staffId, UpdateStaffViewModel staffVM) {
         ArrayList<Staff> all = MockData.getStaff();
@@ -83,6 +112,10 @@ public class StaffRepository extends IStaffRepository{
         MockData.setStaff(all);
     }
 
+    /**
+     * Delete a staff by passing her staff ID.
+     * @param staffId Staff ID used to delete a staff member.
+     */
     @Override
     public void deleteStaff(UUID staffId) {
         ArrayList<Staff> all = MockData.getStaff();
@@ -93,6 +126,10 @@ public class StaffRepository extends IStaffRepository{
         return;
     }
 
+    /**
+     * Delete a staff member by passing her email.
+     * @param email Email used to delete a staff member.
+     */
     @Override
     public void deleteStaffByEmail(String email) {
         ArrayList<Staff> all = MockData.getStaff();
@@ -104,6 +141,11 @@ public class StaffRepository extends IStaffRepository{
         }
     }
 
+    /**
+     * Get staff based on the staff's ID.
+     * @param staffId The staff ID used to identify each staff member.
+     * @return Staff corresponding to the staffId.
+     */
     @Override
     public Staff getStaffId(UUID staffId) {
         ArrayList<Staff> all = MockData.getStaff();

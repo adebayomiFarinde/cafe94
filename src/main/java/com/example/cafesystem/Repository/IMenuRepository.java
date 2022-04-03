@@ -6,6 +6,9 @@ import com.example.cafesystem.ViewModels.MenuViewModel;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * This is an abstract class which provides methods for the MenuRepository class.
+ */
 public abstract class IMenuRepository {
     public abstract UUID createMenu(MenuViewModel item);
     public abstract void deleteMenu(UUID menuId);

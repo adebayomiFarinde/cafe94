@@ -13,10 +13,16 @@ import java.util.Locale;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-
+/**
+ *  This class is a repository class that implements all the abstract methods in the ICustomerRepository class.
+ */
 public class CustomerRepository extends ICustomerRepository{
 
 
+    /** Create a new Customer, add it to the repository.
+     * @param customer  The customer to be added.
+     * @return id of the new Customer.
+     */
     @Override
     public UUID createCustomer(CustomerViewModel customer) {
         ArrayList<Customer> all = MockData.getCustomers();
@@ -37,6 +43,10 @@ public class CustomerRepository extends ICustomerRepository{
     }
 
 
+    /** Update a Customer.
+     * @param customerId The customerID of the Booking to be updated.
+     * @param customerViewModel The customer object.
+     */
     @Override
     public void updateCustomer(UUID customerId, UpdateCustomerViewModel customerViewModel) {
         ArrayList<Customer> all = MockData.getCustomers();
@@ -56,6 +66,9 @@ public class CustomerRepository extends ICustomerRepository{
     }
 
 
+    /** Get list of all customers.
+     * @return The list containing all customers.
+     */
     @Override
     public List<Customer> getAllCustomers() {
         ArrayList<Customer> all = MockData.getCustomers();
@@ -64,6 +77,9 @@ public class CustomerRepository extends ICustomerRepository{
     }
 
 
+    /** Delete a booking by passing his customer ID.
+     * @param customerId Customer ID used to delete booking.
+     */
     @Override
     public void deleteCustomer(UUID customerId) {
         ArrayList<Customer> all = MockData.getCustomers();
@@ -75,6 +91,10 @@ public class CustomerRepository extends ICustomerRepository{
     }
 
 
+    /** Get customer based on the customer's ID.
+     * @param customerId The customer ID used to identify each customer.
+     * @return Customer corresponding to the customerId.
+     */
     @Override
     public Customer getCustomerId(UUID customerId) {
         ArrayList<Customer> all = MockData.getCustomers();
@@ -83,6 +103,9 @@ public class CustomerRepository extends ICustomerRepository{
     }
 
 
+    /** Delete a booking by passing its email.
+     * @param email Email used to delete a customer.
+     */
     @Override
     public void deleteCustomerByEmail(String email) {
         ArrayList<Customer> all = MockData.getCustomers();
@@ -96,6 +119,11 @@ public class CustomerRepository extends ICustomerRepository{
     }
 
 
+    /** Get customer based on customers email and password.
+     * @param email The email used to identify each customer.
+     * @param password The password used to identify each customer.
+     * @return Customer with the corresponding email and password.
+     */
     @Override
     public Customer getCustomerByEmailPassword(String email, String password) {
         ArrayList<Customer> all = MockData.getCustomers();
