@@ -13,7 +13,10 @@ import java.util.Locale;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+
 public class CustomerRepository extends ICustomerRepository{
+
+
     @Override
     public UUID createCustomer(CustomerViewModel customer) {
         ArrayList<Customer> all = MockData.getCustomers();
@@ -33,6 +36,7 @@ public class CustomerRepository extends ICustomerRepository{
         }
     }
 
+
     @Override
     public void updateCustomer(UUID customerId, UpdateCustomerViewModel customerViewModel) {
         ArrayList<Customer> all = MockData.getCustomers();
@@ -51,12 +55,14 @@ public class CustomerRepository extends ICustomerRepository{
         return;
     }
 
+
     @Override
     public List<Customer> getAllCustomers() {
         ArrayList<Customer> all = MockData.getCustomers();
 
         return all.stream().filter(x -> !x.getIsDeleted()).collect(Collectors.toList());
     }
+
 
     @Override
     public void deleteCustomer(UUID customerId) {
@@ -68,12 +74,14 @@ public class CustomerRepository extends ICustomerRepository{
         return;
     }
 
+
     @Override
     public Customer getCustomerId(UUID customerId) {
         ArrayList<Customer> all = MockData.getCustomers();
 
         return all.stream().filter(x -> x.getId().equals(customerId)).findAny().orElse(null);
     }
+
 
     @Override
     public void deleteCustomerByEmail(String email) {
@@ -86,6 +94,7 @@ public class CustomerRepository extends ICustomerRepository{
         }
 
     }
+
 
     @Override
     public Customer getCustomerByEmailPassword(String email, String password) {

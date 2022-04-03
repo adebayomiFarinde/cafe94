@@ -7,7 +7,9 @@ import com.example.cafesystem.ViewModels.UpdateCreateBooking;
 import java.util.List;
 import java.util.UUID;
 
+
 public abstract class IBookingRepository {
+
     public abstract UUID createBooking(CreateBooking booking);
     public abstract void updateBooking(UUID bookingId, UpdateCreateBooking updateCreateBooking);
     public abstract void deleteBooking(UUID bookingId);
