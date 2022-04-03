@@ -1,33 +1,45 @@
 package com.example.cafesystem;
-import java.util.Scanner;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 //controller, makes possible the interaction between view and model
-public class Main {
+public class Main extends Application {
 
-    public static void main(String[] args) {
+    /**The main entry point for all JavaFX applications.
+     * @param stage The stage.
+     * @throws IOException Throws an exception which has to be caught if it occurs.
+     */
+    @Override
+    public void start(Stage stage) throws IOException {
+        try
+        {
+            //create root Node
+            Parent root =  FXMLLoader.load(getClass().getResource("welcomeView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+
+        } catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+
+
 
     }
+
+    /**
+     * Main Method which launches the application.
+     * @param args Arguments passed by the command line.
+     */
+    public static void main(String[] args) {
+        launch();
+    }
 }
-
-
-  /* //to display after customer logs in
-        System.out.println("Eat in, Delivery or take away?");
-
-        System.out.println("If eat in, make a booking, if there are avaible seats/tables");
-        System.out.println("If customer has already made a booking, show option to cancel it");
-        //waiter view, booking with id has made
-        System.out.println("control of the system switches to waiter, approve booking or not");
-
-        System.out.println("notify customer ");
-
-        System.out.println("back to log in menu or switch to admin view");
-
-
-        //no staff requirements, no need to confirm availability, no events
-
-        //a screen should be available with a list of non completed orders.
-        //chef can specify the daily special
-
-
-
-        //quit program, save database to text files first*/
