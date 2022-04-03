@@ -3,8 +3,7 @@ package com.example.cafesystem;
 import java.time.LocalDateTime;
 
 /**
- * This class represents a view model for the Booking class (name,isActive,bookingTime,numberOfGuest,referenceCode).
- * This class exposes certain booking properties.
+ * This class represents a view model for the Booking class
  */
 public class BookingVM {
     private String name;

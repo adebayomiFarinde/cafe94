@@ -7,8 +7,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
- * This class represent a Booking made by a customer (bookingId,referenceCode,bookingTime,customerID,numberOfGuest
- * isDeleted,isActive,createdDate,createdBy)
+ * This class represent a Booking made by a customer.
  */
 public class Booking extends BaseEntity
 {

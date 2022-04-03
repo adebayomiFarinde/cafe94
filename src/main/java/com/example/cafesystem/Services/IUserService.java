@@ -2,6 +2,10 @@ package com.example.cafesystem.Services;
 
 import java.util.UUID;
 
+/**
+ * This is an abstract class which provides methods for the UserService class.
+ */
+
 public abstract class IUserService {
     public abstract boolean customerLogin(String email, String password);
     public abstract boolean adminLogin(String email, String password);

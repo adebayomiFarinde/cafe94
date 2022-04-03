@@ -6,7 +6,7 @@ import java.time.LocalTime;
 import java.util.UUID;
 
 /**
- * This class represents a Takeaway Order made by the customer (id, menuId, referenceCode, isActive,  isDeleted, createdDate,createdBy)
+ * This class represents a Takeaway Order made by the customer.
  */
 public class Takeaway extends BaseEntity  {
 

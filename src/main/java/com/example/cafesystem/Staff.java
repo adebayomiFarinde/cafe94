@@ -39,7 +39,7 @@ public class Staff extends  Person {
      * @param lName The last name component.
      * @param password The password component.
      * @param address The address component.
-     * @param portfolio The portofolio component.
+     * @param portfolio The portfolio component.
      * @param email The email component.
      * @param isActive Whether it is active or not.
      * @param isDeleted Whether it is deleted or not.

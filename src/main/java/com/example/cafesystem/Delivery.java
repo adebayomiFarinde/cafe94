@@ -5,7 +5,7 @@ import java.time.LocalTime;
 import java.util.UUID;
 
 /**
- * This class represents a Delivery (deliveryId,orderId,deliveryTime,address,isDeleted,isActive,createdDate,createdBy)
+ * This class represents a Delivery
  */
 public class Delivery extends BaseEntity {
     private UUID orderId;

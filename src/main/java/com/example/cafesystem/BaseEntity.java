@@ -4,8 +4,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 /**
- * This class contains properties which are shared by all other classes(id,isDeleted,createdDate
- * ,isActive,createdBy,modifiedDate,modifiedBy)
+ * This class contains properties which are shared by all other classes.
  */
 
 public class BaseEntity {

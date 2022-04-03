@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 /**
- * This class acts as a database of the application. (menu List, staff List, customers List, bookings List,
- * orders List, takeaways List)
+ * This class acts as a database of the application.
  */
 public class MockData {
     private static ArrayList<Menu> menu;

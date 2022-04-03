@@ -1,8 +1,7 @@
 package com.example.cafesystem;
 
 /**
- * This class represents a view model for the Staff class (fName,lName,email,isActive,isDeleted,createdDate).
- * This class exposes certain Staff properties.
+ * This class represents a view model for the Staff class.
  */
 
 public class StaffVM {

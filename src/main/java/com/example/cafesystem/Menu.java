@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 /**
- * This class represents a Menu(id,name,description,isActive,isDeleted,createdDate,createdBy).
+ * This class represents a Menu.
  */
 public class Menu extends BaseEntity {
     private String name;
@@ -17,7 +17,7 @@ public class Menu extends BaseEntity {
      * Create a Menu with the following properties:
      * @param id The id component.
      * @param name The name component.
-     * @param description A descrition of the menu.
+     * @param description A description of the menu.
      * @param isActive Whether is active or not.
      * @param isDeleted Whether it is deleted or not.
      * @param createdDate The creation Date.

@@ -1,7 +1,7 @@
 package com.example.cafesystem;
 
 /**
- * This class represents a view model for the Takeaway class (menuName, referenceCode,isActive,  isDeleted, createdDate, createdBy).
+ * This class represents a view model for the Takeaway class.
  * This class exposes certain takeaway properties.
  */
 

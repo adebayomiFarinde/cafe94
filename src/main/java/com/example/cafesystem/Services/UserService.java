@@ -12,14 +12,31 @@ import java.time.LocalDate;
 import java.util.Locale;
 import java.util.UUID;
 
+/**
+ *  This class is a service class that implements all the abstract methods in the IUserService class.
+ */
+
 public class UserService extends IUserService {
     private ICustomerRepository _customerRepository;
     private IStaffRepository _staffRepository;
+
+    /**
+     * Initialize the UserService.
+     * @param customerRepository The customerRepository component, where all customers are stored.
+     * @param staffRepository The staffRepository component, where all staff are stored.
+     */
     public UserService(ICustomerRepository customerRepository,
                        IStaffRepository staffRepository) {
         _customerRepository = customerRepository;
         _staffRepository = staffRepository;
     }
+
+    /**
+     * Customer login verification.
+     * @param email  The email component.
+     * @param password The password  component.
+     * @return Whether the login was successful.
+     */
     @Override
     public boolean customerLogin(String email, String password) {
         Customer customer = _customerRepository.getCustomerByEmailPassword(email.toLowerCase(Locale.ROOT), password);
@@ -35,6 +52,12 @@ public class UserService extends IUserService {
         }
     }
 
+    /**
+     * Admin login verification.
+     * @param email  The email component.
+     * @param password The password  component.
+     * @return  Whether the login was successful.
+     */
     @Override
     public boolean adminLogin(String email, String password) {
         Staff staff = _staffRepository.getStaffByEmailPassword(email.toLowerCase(Locale.ROOT), password);
@@ -51,6 +74,13 @@ public class UserService extends IUserService {
         }
     }
 
+    /**
+     * Create customer.
+     * @param fName  The first name component.
+     * @param lName The last name component.
+     * @param email The email component.
+     * @return The id of the created customer.
+     */
     @Override
     public UUID createCustomer(String fName, String lName, String email) {
         String password = UUID.randomUUID().toString();
@@ -66,6 +96,13 @@ public class UserService extends IUserService {
         return null;
     }
 
+    /**
+     * Create admin.
+     * @param fName  The first name component.
+     * @param lName The last name component.
+     * @param email The email component.
+     * @return The id of the created admin.
+     */
     @Override
     public UUID createAdmin(String fName, String lName, String email) {
         String password = UUID.randomUUID().toString();
@@ -81,6 +118,11 @@ public class UserService extends IUserService {
         return null;
     }
 
+    /**
+     * Delete customer from repository.
+     * @param email  The email component.
+     * @return Whether it was deleted correctly.
+     */
     @Override
     public boolean deleteCustomer(String email) {
         try {
@@ -94,6 +136,11 @@ public class UserService extends IUserService {
         }
     }
 
+    /**
+     * Delete staff from repository.
+     * @param email  The email component.
+     * @return Whether it was deleted correctly.
+     */
     @Override
     public boolean deleteStaff(String email) {
         try {
